@@ -86,43 +86,158 @@ gestionarScroll();
 
 
 // --------------------------------------------------
-// 3. MAPA: TOOLTIPS EN MOBILE (TAP)
+// 3. MAPA: TOOLTIPS EN MOBILE (TAP) + POSICIONAMIENTO
 //
 // Cómo funciona:
-// - En desktop el :hover de CSS ya gestiona los tooltips
-// - En mobile no existe hover, así que escuchamos
-//   touchstart para añadir la clase .activo al punto
-// - Tap en cualquier otro sitio cierra todos los tooltips
-// - También se gestiona la activación con teclado
-//   (Enter y Espacio) para accesibilidad
+// - Los tooltips se extraen del .mapa-punto y se
+//   mueven al body con position: fixed para que
+//   aparezcan sobre cualquier otro elemento
+// - En desktop el :hover activa el tooltip
+// - En mobile touchstart activa el tooltip
+// - Se calcula la posición del tooltip dinámicamente
+//   respecto al punto del mapa
 // --------------------------------------------------
 const puntos = document.querySelectorAll('.mapa-punto');
+const tooltipsMovidos = new Map(); // Almacenar tooltips movidos
+let tooltipTimeout = null; // Para evitar flickering
 
+// Función para calcular la posición del tooltip
+function posicionarTooltip(punto, tooltip) {
+    const rect = punto.getBoundingClientRect();
+    const tooltipHeight = 340; // Altura aproximada del tooltip
+    const tooltipWidth = 220;
+    const padding = 5; // Espaciado extra grande para alejar el tooltip hacia arriba
+
+    // Determinar si el tooltip debe ir hacia arriba o abajo
+    // Los puntos con clase .punto-abajo van hacia abajo
+    const irHaciaAbajo = punto.classList.contains('punto-abajo');
+
+    let top, left;
+
+    if (irHaciaAbajo) {
+        // Tooltip debajo del punto
+        top = rect.bottom + padding;
+    } else {
+        // Tooltip encima del punto - añadir extra distancia para alejar el tooltip
+        top = rect.top - tooltipHeight - padding;
+    }
+
+    // Centrado horizontalmente (restar la mitad del ancho del tooltip)
+    left = rect.left + (rect.width / 2) - (tooltipWidth / 2);
+
+    tooltip.style.position = 'fixed';
+    tooltip.style.top = top + 'px';
+    tooltip.style.left = left + 'px';
+    tooltip.style.zIndex = '9999';
+}
+
+// Mover tooltips al body
 puntos.forEach(function (punto) {
+    const tooltip = punto.querySelector('.mapa-tooltip');
+
+    if (tooltip) {
+        // Clonar el tooltip y moverlo al body
+        const tooltipClonado = tooltip.cloneNode(true);
+        document.body.appendChild(tooltipClonado);
+        tooltipsMovidos.set(punto, tooltipClonado);
+
+        // Remover el tooltip original del punto
+        tooltip.remove();
+    }
 
     // Accesibilidad: activar con teclado
     punto.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            puntos.forEach(function (p) {
-                if (p !== punto) p.classList.remove('activo');
+
+            // Limpiar timeout anterior
+            if (tooltipTimeout) clearTimeout(tooltipTimeout);
+
+            // Desactivar todos los tooltips
+            tooltipsMovidos.forEach(function (tooltip) {
+                tooltip.classList.remove('activo');
             });
-            punto.classList.toggle('activo');
+
+            // Activar el tooltip del punto actual
+            const tooltipActual = tooltipsMovidos.get(punto);
+            if (tooltipActual) {
+                tooltipActual.classList.add('activo');
+                posicionarTooltip(punto, tooltipActual);
+            }
+        }
+    });
+
+    // Desktop: hover activa el tooltip
+    punto.addEventListener('mouseenter', function () {
+        // Limpiar timeout anterior (en caso de que estuviera esperando para desactivar)
+        if (tooltipTimeout) clearTimeout(tooltipTimeout);
+
+        // Desactivar todos los tooltips
+        tooltipsMovidos.forEach(function (tooltip) {
+            tooltip.classList.remove('activo');
+        });
+
+        // Activar el tooltip del punto actual
+        const tooltipActual = tooltipsMovidos.get(punto);
+        if (tooltipActual) {
+            tooltipActual.classList.add('activo');
+            posicionarTooltip(punto, tooltipActual);
+        }
+    });
+
+    punto.addEventListener('mouseleave', function () {
+        const tooltipActual = tooltipsMovidos.get(punto);
+        if (tooltipActual) {
+            // Pequeño delay para evitar flickering si el cursor pasa sobre el tooltip
+            tooltipTimeout = setTimeout(function () {
+                tooltipActual.classList.remove('activo');
+            }, 100);
         }
     });
 
     // Mobile: tap activa el tooltip
     punto.addEventListener('touchstart', function (e) {
-        e.stopPropagation(); // evita que el tap llegue al document
-        puntos.forEach(function (p) {
-            if (p !== punto) p.classList.remove('activo');
+        e.stopPropagation();
+
+        // Limpiar timeout anterior
+        if (tooltipTimeout) clearTimeout(tooltipTimeout);
+
+        // Desactivar todos los tooltips
+        tooltipsMovidos.forEach(function (tooltip) {
+            tooltip.classList.remove('activo');
         });
-        punto.classList.toggle('activo');
+
+        // Activar el tooltip del punto actual
+        const tooltipActual = tooltipsMovidos.get(punto);
+        if (tooltipActual) {
+            tooltipActual.classList.add('activo');
+            posicionarTooltip(punto, tooltipActual);
+        }
     }, { passive: true });
 
 });
 
 // Tap fuera de cualquier punto cierra todos los tooltips
 document.addEventListener('touchstart', function () {
-    puntos.forEach(function (p) { p.classList.remove('activo'); });
+    if (tooltipTimeout) clearTimeout(tooltipTimeout);
+    tooltipsMovidos.forEach(function (tooltip) {
+        tooltip.classList.remove('activo');
+    });
 }, { passive: true });
+
+// Reposicionar tooltips al hacer resize/scroll
+window.addEventListener('scroll', function () {
+    tooltipsMovidos.forEach(function (tooltip, punto) {
+        if (tooltip.classList.contains('activo')) {
+            posicionarTooltip(punto, tooltip);
+        }
+    });
+}, { passive: true });
+
+window.addEventListener('resize', function () {
+    tooltipsMovidos.forEach(function (tooltip, punto) {
+        if (tooltip.classList.contains('activo')) {
+            posicionarTooltip(punto, tooltip);
+        }
+    });
+});

@@ -28,20 +28,23 @@
 </nav>
 
 <!-- Menú overlay -->
-<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true">
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menú de navegación">
     <div class="menu-columnas">
+
         <div class="menu-columna">
-            <a href="restaurante.html" class="menu-item menu-item--bold">Restaurante</a>
+            <a href="restaurante.html" class="menu-titulo">Restaurante</a>
             <a href="restaurante.html#menu"    class="menu-item">Menú</a>
             <a href="restaurante.html#eventos" class="menu-item">Eventos</a>
-            <a href="reservas.html"            class="menu-item">Reservas</a>
+            <a href="reservas.html#proveedores"            class="menu-item">Productos</a>
         </div>
+
         <div class="menu-columna">
-            <a href="galeria.html" class="menu-item menu-item--bold">Galería</a>
+            <a href="galeria.html" class="menu-titulo">Galería</a>
             <a href="galeria.html#exposiciones"      class="menu-item">Exposiciones</a>
             <a href="galeria.html#artistas"          class="menu-item">Artistas</a>
-            <a href="galeria.html#programa-creacion" class="menu-item">Programa de creación</a>
+            <a href="galeria.html#programa-creacion" class="menu-item">Creación</a>
         </div>
+
     </div>
 </div>
 
@@ -354,14 +357,10 @@
     <!-- Mapa con puntos de proveedores -->
     <div class="rest-mapa-contenedor" id="mapaProveedores">
 
-        <!--
-          PRODUCCIÓN: sustituir por:
-          <img src="assets/images/mapa-asturias.png"
-               alt="Mapa de Asturias con proveedores"
-               class="rest-mapa-imagen" />
-        -->
         <div class="rest-placeholder rest-placeholder--mapa">
-            [ assets/images/mapa-asturias.png ]
+            <img src="assets/images/mapa-asturias-proveedores.png"
+                 alt="Mapa de Asturias con proveedores"
+                 class="rest-mapa-imagen" />
         </div>
 
         <!-- PROVEEDOR 1: Huerta La Güeria (amarillo) — Cangas de Onís, centro-este -->

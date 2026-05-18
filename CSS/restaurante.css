@@ -426,7 +426,7 @@
     z-index: 100;
 }
 
-.prov-punto--amarillo { background: #d4a843; }
+.prov-punto--amarillo { background: #000000; }
 .prov-punto--azul     { background: #3a6fd4; }
 .prov-punto--rosa     { background: #e8567a; }
 .prov-punto--rojo     { background: #b03030; }
@@ -439,7 +439,7 @@
     bottom: calc(100% + 16px);
     left: 50%;
     transform: translateX(-50%) translateY(8px);
-    width: 340px;
+    width: 400px;
     background: #fff;
     border: 1.5px solid var(--negro);
     padding: 24px 28px;

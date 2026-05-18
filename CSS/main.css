@@ -143,7 +143,7 @@ body.menu-abierto .btn-menu span:nth-child(3) {
     position: fixed;
     inset: 0;
     background: var(--blanco);
-    z-index: 999;
+    z-index: 10000;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -530,6 +530,7 @@ body.menu-abierto .menu-overlay {
     padding: 60px 80px 100px;
     max-width: 1400px;
     margin: 0 auto;
+    isolation: isolate;
 }
 
 .mapa-contenedor {
@@ -565,8 +566,33 @@ body.menu-abierto .menu-overlay {
     border-radius: 50%;
     cursor: pointer;
     transform: translate(-50%, -50%);
-    z-index: 10;
+    z-index: 1;
     transition: transform 0.2s ease;
+}
+
+/* Área invisible expandida para hover (evita parpadeos) */
+.mapa-punto::before {
+    content: '';
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: auto;
+}
+
+/* Área expandida hacia arriba para mantener hover al mover hacia el tooltip */
+.mapa-punto::after {
+    content: '';
+    position: absolute;
+    width: 44px;
+    height: 420px;
+    top: -410px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: auto;
 }
 
 .mapa-punto:hover {
@@ -585,25 +611,27 @@ body.menu-abierto .menu-overlay {
 
 /* Tooltip polaroid */
 .mapa-tooltip {
-    position: absolute;
-    bottom: calc(100% + 12px);
-    left: 50%;
-    transform: translateX(-50%) rotate(-3deg) scale(0.85);
+    position: fixed;
+    bottom: auto;
+    left: auto;
+    transform: rotate(-3deg) scale(0.85);
     width: 220px;
     background: var(--blanco);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.3s ease;
     transform-origin: bottom center;
-    z-index: 20;
+    /* Mantener sobre todo (incluso sobre overlay cuando no está activo) */
+    z-index: 9999;
     border: 2px solid #000000;
+    display: none;
 }
 
-.mapa-punto:hover .mapa-tooltip,
-.mapa-punto.activo .mapa-tooltip {
+.mapa-tooltip.activo {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(-50%) rotate(-2deg) scale(1);
+    display: block;
+    transform: rotate(-2deg) scale(1);
 }
 
 .mapa-tooltip-imagen {
@@ -628,34 +656,8 @@ body.menu-abierto .menu-overlay {
 }
 
 /* Tooltips cerca del borde izquierdo — aparecen a la derecha */
-.punto-mostaza .mapa-tooltip,
-.punto-azul .mapa-tooltip {
-    left: auto;
-    right: -20px;
-    transform: translateX(0) rotate(2deg) scale(0.85);
-    transform-origin: bottom left;
-}
-
-.punto-abajo .mapa-tooltip {
-    bottom: auto;
-    top: calc(100% + 12px);
-    transform-origin: top center;
-    transform: translateX(-50%) rotate(-3deg) scale(0.85);
-}
-
-.punto-abajo:hover .mapa-tooltip,
-.punto-abajo.activo .mapa-tooltip {
-    transform: translateX(-50%) rotate(-2deg) scale(1);
-    opacity: 1;
-}
-
-.punto-mostaza:hover .mapa-tooltip,
-.punto-azul:hover .mapa-tooltip,
-.punto-mostaza.activo .mapa-tooltip,
-.punto-azul.activo .mapa-tooltip {
-    transform: translateX(0) rotate(2deg) scale(1);
-    opacity: 1;
-}
+/* Estas reglas ya no aplican porque los tooltips están en el body */
+/* Se controla la posición completamente desde JavaScript */
 
 /* CTAs bajo el mapa */
 .mapa-ctas {

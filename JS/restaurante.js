@@ -57,7 +57,7 @@ const INGREDIENTES = {
     },
 
     'escanda': {
-        color: 'amarillo',
+        color: 'rosa',
         imagen: 'assets/images/ing-escanda.png',
         campos: {
             'Origen':      'Huerta de La Güeria, Cangas de Onís',
@@ -123,7 +123,7 @@ const INGREDIENTES = {
     },
 
     'coliflor': {
-        color: 'amarillo',
+        color: 'verde',
         imagen: 'assets/images/ing-coliflor.png',
         campos: {
             'Origen':      'Huerta de La Güeria, Cangas de Onís',
@@ -300,7 +300,7 @@ const INGREDIENTES = {
 
     // --- ROXA DE LOS VALLES — GANADERÍA (rojo) ---
     'presa-iberica': {
-        color: 'rojo',
+        color: 'azul',
         imagen: 'assets/images/ing-presa.png',
         campos: {
             'Origen':      'Roxa de los Valles — Ganadería regenerativa, occidente asturiano',
@@ -404,7 +404,7 @@ const INGREDIENTES = {
     },
 
     'almendra': {
-        color: 'rojo',
+        color: 'amarillo',
         imagen: 'assets/images/ing-almendra.png',
         campos: {
             'Origen':               'Monte Ciego, Cangas de Onís',
