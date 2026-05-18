@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurante — Nuberu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/restaurante.css" />
+</head>
+<body>
+
+<!-- ============================================
+     BARRA FIJA INFERIOR (igual que index)
+============================================= -->
+<nav class="barra-inferior" role="navigation" aria-label="Navegación principal">
+    <button class="btn-menu" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="barra-logo barra-logo--visible" aria-label="Inicio">
+        <!-- PRODUCCIÓN: <img src="assets/images/logo-nuberu-pequeno.png" alt="Nuberu" height="28" /> -->
+        <span class="barra-logo-texto">Nuberu</span>
+    </a>
+    <a href="reservas.html" class="btn-reservar" role="button">Reservar</a>
+</nav>
+
+<!-- Menú overlay -->
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true">
+    <div class="menu-columnas">
+        <div class="menu-columna">
+            <a href="restaurante.html" class="menu-item menu-item--bold">Restaurante</a>
+            <a href="restaurante.html#menu"    class="menu-item">Menú</a>
+            <a href="restaurante.html#eventos" class="menu-item">Eventos</a>
+            <a href="reservas.html"            class="menu-item">Reservas</a>
+        </div>
+        <div class="menu-columna">
+            <a href="galeria.html" class="menu-item menu-item--bold">Galería</a>
+            <a href="galeria.html#exposiciones"      class="menu-item">Exposiciones</a>
+            <a href="galeria.html#artistas"          class="menu-item">Artistas</a>
+            <a href="galeria.html#programa-creacion" class="menu-item">Programa de creación</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================
+     INTRO STICKY
+============================================= -->
+<section class="rest-intro" id="intro">
+
+    <!-- Etiqueta fija -->
+    <a href="#" class="rest-label-fijo" aria-label="Volver al inicio">
+        <span>Restaurante</span>
+    </a>
+
+    <!-- Imagen completa de la intro (imagen escaneada con composición) -->
+    <div class="rest-intro__imagen">
+        <img src="assets/images/intro-restaurante.png" alt="Restaurante" />
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     MENÚ DEL MES
+============================================= -->
+<section class="rest-menu" id="menu">
+
+    <div class="rest-menu__cabecera">
+        <h1 class="rest-menu__titulo">Menú Xunu (Junio)</h1>
+        <p class="rest-menu__subtitulo">Temporada de niebla lenta y huerta húmeda.</p>
+    </div>
+
+    <!-- ENTRANTES -->
+    <div class="rest-menu__bloque">
+        <h2 class="rest-menu__categoria">Entrantes</h2>
+
+        <p class="rest-menu__plato">
+            <strong>Trás la lluvia.</strong>
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="tomates-antiguos">Tomates antiguos</span>,
+            <span class="ingrediente ingrediente--azul" data-ingrediente="requesón-ahumado">requesón ahumado</span>
+            y hierbas silvestres
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Blanco suspendido.</strong>
+            Ajoblanco de
+            <span class="ingrediente ingrediente--rojo" data-ingrediente="avellana">avellana</span>,
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="cerezas">cerezas</span>
+            encurtidas y
+            <span class="ingrediente ingrediente--rosa" data-ingrediente="anchoa">anchoa del Cantábrico</span>
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Descanso.</strong>
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="puerro">Puerro</span>
+            braseado, mantequilla noisette y migas de
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="escanda">escanda</span>
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Tierras.</strong>
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="remolacha">Remolacha</span>
+            asada,
+            <span class="ingrediente ingrediente--verde" data-ingrediente="yema">yema</span>
+            curada y
+            <span class="ingrediente ingrediente--azul" data-ingrediente="gamoneú-joven">Gamonéu</span>
+            joven
+        </p>
+    </div>
+
+    <!-- PRIMEROS -->
+    <div class="rest-menu__bloque">
+        <h2 class="rest-menu__categoria">Primeros</h2>
+
+        <p class="rest-menu__plato">
+            <strong>Verde junio.</strong>
+            Arroz meloso de
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="guisantes">guisantes lágrima</span>,
+            menta y limón quemado
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Pliegue.</strong>
+            Ravioli abierto de
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="calabacín">calabacín</span>,
+            <span class="ingrediente ingrediente--azul" data-ingrediente="ricotta">ricotta artesanal</span>
+            y caldo de
+            <span class="ingrediente ingrediente--verde" data-ingrediente="gallina">gallina</span>
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>La braña 2.</strong>
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="fabes">Fabes</span>
+            tiernas,
+            <span class="ingrediente ingrediente--verde" data-ingrediente="setas">setas</span>
+            de temporada y emulsión de
+            <span class="ingrediente ingrediente--naranja" data-ingrediente="sidra">sidra</span>
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Ceniza blanca.</strong>
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="coliflor">Coliflor</span>
+            asada,
+            <span class="ingrediente ingrediente--rojo" data-ingrediente="almendra">almendra</span>
+            tostada y
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="ajo-negro">ajo</span>
+            negro
+        </p>
+    </div>
+
+    <!-- SEGUNDOS -->
+    <div class="rest-menu__bloque">
+        <h2 class="rest-menu__categoria">Segundos</h2>
+
+        <p class="rest-menu__plato">
+            <strong>Marea fría.</strong>
+            <span class="ingrediente ingrediente--rosa" data-ingrediente="merluza">Merluza del Cantábrico</span>,
+            beurre blanc de
+            <span class="ingrediente ingrediente--naranja" data-ingrediente="sidra-merluza">sidra</span>
+            y
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="tirabeques">tirabeques</span>
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Brezo y carbón.</strong>
+            <span class="ingrediente ingrediente--rojo" data-ingrediente="presa-iberica">Presa ibérica</span>
+            glaseada y
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="zanahorias">zanahorias</span>
+            asadas
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Corral de verano.</strong>
+            <span class="ingrediente ingrediente--verde" data-ingrediente="pollo">Pollo de corral</span>,
+            hierbas frescas y jugo reducido
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Brasa y humo.</strong>
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="berenjena">Berenjena</span>
+            ahumada, miso artesanal y trigo tierno
+        </p>
+    </div>
+
+    <!-- POSTRES -->
+    <div class="rest-menu__bloque">
+        <h2 class="rest-menu__categoria">Postres</h2>
+
+        <p class="rest-menu__plato">
+            <strong>Junio rojo.</strong>
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="fresas">Fresas</span>
+            maceradas, vainilla y mantequilla salada
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Boscoso.</strong>
+            <span class="ingrediente ingrediente--azul" data-ingrediente="cuajada">Cuajada fresca</span>,
+            <span class="ingrediente ingrediente--verde" data-ingrediente="miel">miel</span>
+            oscura y nueces caramelizadas
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Última luz.</strong>
+            Tarta fina de
+            <span class="ingrediente ingrediente--naranja" data-ingrediente="albaricoque">albaricoque</span>
+            y romero con helado de
+            <span class="ingrediente ingrediente--azul" data-ingrediente="nata">nata</span>
+        </p>
+
+        <p class="rest-menu__plato">
+            <strong>Piedra y cacao.</strong>
+            Chocolate amargo,
+            <span class="ingrediente ingrediente--amarillo" data-ingrediente="aceite-oliva">aceite de oliva</span>
+            y sal ahumada
+        </p>
+    </div>
+
+</section><!-- /rest-menu -->
+
+
+<!-- ============================================
+     TOOLTIPS DE INGREDIENTES
+     Están en el DOM pero ocultos.
+     JS los posiciona al hacer hover/click.
+============================================= -->
+<div class="ingrediente-tooltip" id="tooltipIngrediente" role="tooltip" aria-hidden="true">
+    <div class="ingrediente-tooltip__inner" id="tooltipInner">
+        <!-- Contenido inyectado por JS -->
+    </div>
+</div>
+
+
+<!-- ============================================
+     PEREGRINAJE
+============================================= -->
+<section class="rest-peregrinaje" id="peregrinaje">
+
+    <div class="rest-peregrinaje__cabecera">
+        <h2 class="rest-menu__titulo">Peregrinaje</h2>
+        <p class="rest-menu__subtitulo">Cocina georgiana contemporánea elaborada<br>con producto asturiano de temporada.</p>
+        <p class="rest-peregrinaje__semana">Semana del 15 al 21 de junio</p>
+    </div>
+
+    <div class="rest-menu__bloque">
+        <h2 class="rest-menu__categoria">Entrantes</h2>
+        <p class="rest-menu__plato"><strong>Deriva.</strong> Khachapuri abierto de Gamonéu suave, mantequilla ahumada y hierbas frescas</p>
+        <p class="rest-menu__plato"><strong>Suspensión.</strong> Remolacha asada, yogur ácido, nuez fermentada y aceite de eneldo</p>
+    </div>
+
+    <div class="rest-menu__bloque">
+        <h2 class="rest-menu__categoria">Primeros</h2>
+        <p class="rest-menu__plato"><strong>Pliegue.</strong> Dumplings georgianos rellenos de setas de temporada y caldo oscuro de cebolla</p>
+        <p class="rest-menu__plato"><strong>Braña.</strong> Fabes tiernas guisadas con hierbas caucásicas y crema agria casera</p>
+    </div>
+
+    <div class="rest-menu__bloque">
+        <h2 class="rest-menu__categoria">Segundos</h2>
+        <p class="rest-menu__plato"><strong>Ascua.</strong> Trucha a la brasa, mantequilla de sidra y hojas amargas</p>
+        <p class="rest-menu__plato"><strong>Carbón.</strong> Cordero cocinado lentamente, berenjena ahumada y trigo tierno fermentado</p>
+    </div>
+
+    <div class="rest-menu__bloque">
+        <h2 class="rest-menu__categoria">Postres</h2>
+        <p class="rest-menu__plato"><strong>Piedra.</strong> Miel oscura, nuez caramelizada y crema helada de matsoni</p>
+        <p class="rest-menu__plato"><strong>Ocaso.</strong> Cereza, vino tinto especiado y bizcocho tibio de almendra</p>
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     PEREGRINO DEL MES — NINO KAPANADZE
+============================================= -->
+<section class="rest-peregrino" id="peregrino">
+
+    <div class="rest-peregrino__imagen">
+        <!--
+          PRODUCCIÓN:
+          <img src="assets/images/nino-kapanadze.jpg" alt="Nino Kapanadze" />
+        -->
+        <div class="rest-placeholder rest-placeholder--peregrino">
+            [ assets/images/nino-kapanadze.jpg ]
+        </div>
+    </div>
+
+    <div class="rest-peregrino__texto">
+        <h2 class="rest-peregrino__nombre">Nino Kapanadze</h2>
+        <p>Nino nació en un pequeño pueblo de la región de Kajeti, en el este de Georgia. Aprendió a cocinar con su abuela utilizando productos locales, fermentaciones tradicionales y recetas transmitidas oralmente generación tras generación.</p>
+        <p>A los 27 años emigró a Berlín y comenzó trabajando en cocinas de barro hasta abrir su pequeño local de apenas seis mesas en Lichtenberg. Sin inversión y sin prensa empezó sirviendo platos de su infancia.</p>
+        <p>En Nuberu, Nino desarrolla una residencia gastronómica temporal donde desastramos un menú con ingredientes asturianos y técnicas tradicionales caucásicas: humo, fermentación, hierbas frescas, lácticos ácidos y pan vivo.</p>
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     EVENTOS
+============================================= -->
+<section class="rest-eventos" id="eventos">
+
+    <div class="rest-eventos__imagen">
+        <!--
+          PRODUCCIÓN:
+          <img src="assets/images/evento-gamoneú-live.jpg" alt="Gamonéu Live" />
+        -->
+        <div class="rest-placeholder rest-placeholder--eventos">
+            [ assets/images/evento-gamoneú-live.jpg ]
+        </div>
+    </div>
+
+    <div class="rest-eventos__contenido">
+        <p class="actualidad-etiqueta">Eventos</p>
+        <!--
+          PRODUCCIÓN: sustituir el h2 por imagen manuscrita:
+          <img src="assets/images/gastronomia-arte-circulares.png" alt="Gastronomía y arte circulares" />
+        -->
+        <h2 class="rest-eventos__titulo-manuscrito">Gastronomía y arte circulares</h2>
+        <p class="rest-eventos__descripcion">
+            Las tardes del 20 al 27 de junio se disfrutará de una cata de quesos Asturianos mientras María Ramírez nos deleitará con su pintura en vivo.
+        </p>
+        <a href="reservas.html" class="btn-saber-mas">Reservar experiencia</a>
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     MAPA DE PROVEEDORES
+     Mapa ilustrado de Asturias con puntos
+     que al hacer hover muestran info del proveedor
+============================================= -->
+<section class="rest-proveedores" id="proveedores">
+
+    <div class="rest-proveedores__cabecera">
+        <h2 class="rest-proveedores__titulo">Nuestros productos</h2>
+        <div class="rest-proveedores__claims">
+            <p>Lo local sabe mejor</p>
+            <p>Innovación con producto local</p>
+            <!--
+              PRODUCCIÓN: imagen manuscrita
+              <img src="assets/images/gastronomia-arte-circulares-pequeño.png" alt="Gastronomía y arte circulares" />
+            -->
+            <p class="rest-proveedores__manuscrito">Gastronomía y arte circulares</p>
+        </div>
+        <p class="rest-proveedores__subtexto">
+            Todos nuestros productos tienen origen en la Comunidad de Asturias. Priorizando siempre el consumo local y las buenas prácticas agroganaderas.
+        </p>
+    </div>
+
+    <!-- Mapa con puntos de proveedores -->
+    <div class="rest-mapa-contenedor" id="mapaProveedores">
+
+        <!--
+          PRODUCCIÓN: sustituir por:
+          <img src="assets/images/mapa-asturias.png"
+               alt="Mapa de Asturias con proveedores"
+               class="rest-mapa-imagen" />
+        -->
+        <div class="rest-placeholder rest-placeholder--mapa">
+            [ assets/images/mapa-asturias.png ]
+        </div>
+
+        <!-- PROVEEDOR 1: Huerta La Güeria (amarillo) — Cangas de Onís, centro-este -->
+        <div class="prov-punto prov-punto--amarillo" style="top:52%;left:62%"
+             role="button" tabindex="0" aria-label="Huerta La Güeria">
+            <div class="prov-tooltip prov-tooltip--amarillo">
+                <h3 class="prov-tooltip__nombre">Huerta La Güeria</h3>
+                <div class="prov-tooltip__fila">
+                    <strong>Productos</strong>
+                    <span>Principal proveedora de vegetales<br>Huevos<br>Pollo de corral</span>
+                </div>
+                <p class="prov-tooltip__sostenibilidad"><strong>Sostenibilidad:</strong></p>
+                <ul class="prov-tooltip__lista">
+                    <li>Recuperación de semillas autóctonas en peligro de extinción</li>
+                    <li>Riego por captación de agua de lluvia y mulching con restos vegetales</li>
+                    <li>Cero plásticos en cultivo (acolchado de lana de oveja)</li>
+                    <li>Compostaje de restos del restaurante para fertilizar la huerta</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROVEEDOR 2: Braña Viva — Quesería artesanal (azul) — Picos de Europa -->
+        <div class="prov-punto prov-punto--azul" style="top:30%;left:68%"
+             role="button" tabindex="0" aria-label="Braña Viva">
+            <div class="prov-tooltip prov-tooltip--azul">
+                <h3 class="prov-tooltip__nombre">Braña Viva — Quesería artesanal</h3>
+                <div class="prov-tooltip__fila">
+                    <strong>Productos</strong>
+                    <span>Queso Gamonéu<br>Requesón ahumado<br>Queso fresco</span>
+                </div>
+                <p class="prov-tooltip__sostenibilidad"><strong>Sostenibilidad:</strong></p>
+                <ul class="prov-tooltip__lista">
+                    <li>Pastoreo extensivo (conservación del paisaje)</li>
+                    <li>Alimentación 100% pastos locales sin piensos</li>
+                    <li>Aprovechamiento del suero para alimentación de ganado porcino ecológico</li>
+                    <li>Envases reutilizables con retorno (cubetas de barro cocido)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROVEEDOR 3: Mar Cantábrica — Pescado de bajura (rosa) — Costa norte -->
+        <div class="prov-punto prov-punto--rosa" style="top:18%;left:50%"
+             role="button" tabindex="0" aria-label="Mar Cantábrica">
+            <div class="prov-tooltip prov-tooltip--rosa">
+                <h3 class="prov-tooltip__nombre">Mar Cantábrica — Pescado de bajura</h3>
+                <div class="prov-tooltip__fila">
+                    <strong>Productos</strong>
+                    <span>Merluza del pincho<br>Anchoa<br>Bonito del norte</span>
+                </div>
+                <p class="prov-tooltip__sostenibilidad"><strong>Sostenibilidad:</strong></p>
+                <ul class="prov-tooltip__lista">
+                    <li>Pesca con artes selectivas (anzuelo, nasas)</li>
+                    <li>Embarcaciones de menos de 10 metros</li>
+                    <li>Captura diaria sin excedentes (pesca de jornada)</li>
+                    <li>Trazabilidad total con el puerto de descarga</li>
+                    <li>Colaboración con Cofradía de Pescadores para evitar capturas accidentales de cetáceos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROVEEDOR 4: Roxa de los Valles — Ganadería regenerativa (rojo oscuro) — occidente -->
+        <div class="prov-punto prov-punto--rojo" style="top:55%;left:20%"
+             role="button" tabindex="0" aria-label="Roxa de los Valles">
+            <div class="prov-tooltip prov-tooltip--rojo">
+                <h3 class="prov-tooltip__nombre">Roxa de los Valles — Ganadería regenerativa</h3>
+                <div class="prov-tooltip__fila">
+                    <strong>Productos</strong>
+                    <span>Carne Roxa Asturiana (ternera añeja)</span>
+                </div>
+                <p class="prov-tooltip__sostenibilidad"><strong>Sostenibilidad:</strong></p>
+                <ul class="prov-tooltip__lista">
+                    <li>Ganadería extensiva en pastos de montaña</li>
+                    <li>Sin piensos ni antibióticos profilácticos</li>
+                    <li>Venta de la canal entera (aprovechamiento del 100%)</li>
+                    <li>Certificado de Bienestar Animal</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROVEEDOR 5: Pumarada Tíu Lluis — Sidra (naranja) — centro -->
+        <div class="prov-punto prov-punto--naranja" style="top:40%;left:44%"
+             role="button" tabindex="0" aria-label="Pumarada Tíu Lluis">
+            <div class="prov-tooltip prov-tooltip--naranja">
+                <h3 class="prov-tooltip__nombre">Pumarada Tíu Lluis — Sidra natural y derivados</h3>
+                <div class="prov-tooltip__fila">
+                    <strong>Productos</strong>
+                    <span>Sidra natural espumosa<br>Vinagre de sidra<br>Mermelada de manzana</span>
+                </div>
+                <p class="prov-tooltip__sostenibilidad"><strong>Sostenibilidad:</strong></p>
+                <ul class="prov-tooltip__lista">
+                    <li>Manzanas de variedades locales (Raxao, Durona de Tresali) sin riego artificial</li>
+                    <li>Fermentación espontánea sin sulfitos añadidos</li>
+                    <li>Aprovechamiento del orujo de manzana para alimentación animal y compost</li>
+                    <li>Botellas retornables con sistema de depósito</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROVEEDOR 6: Monte Ciego — Setas y hongos silvestres (verde) — oriente -->
+        <div class="prov-punto prov-punto--verde" style="top:62%;left:78%"
+             role="button" tabindex="0" aria-label="Monte Ciego">
+            <div class="prov-tooltip prov-tooltip--verde">
+                <h3 class="prov-tooltip__nombre">Monte Ciego — Setas y hongos silvestres</h3>
+                <div class="prov-tooltip__fila">
+                    <strong>Productos</strong>
+                    <span>Setas<br>Hongos<br>Frutos secos silvestres</span>
+                </div>
+                <p class="prov-tooltip__sostenibilidad"><strong>Sostenibilidad:</strong></p>
+                <ul class="prov-tooltip__lista">
+                    <li>Recolección manual con turnos rotatorios para respetar ciclos micológicos</li>
+                    <li>Secado con energía solar</li>
+                    <li>Venta de partes no comercializables a precio justo para caldos</li>
+                    <li>Formación a recolectores locales en buenas prácticas</li>
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- /rest-mapa-contenedor -->
+
+    <p class="rest-proveedores__nota">
+        En el mapa se muestran 6 nuestros principales proveedores que nos abastecen en 2025, de los que también utilizamos con sus desechos para crear arte.
+    </p>
+
+</section>
+
+
+<script src="js/main.js"></script>
+<script src="js/restaurante.js"></script>
+
+</body>
+</html>
