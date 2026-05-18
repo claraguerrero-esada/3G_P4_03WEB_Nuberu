@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuberu — El arte de alterar</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Hoja de estilos externa -->
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- ============================================
+     BARRA FIJA INFERIOR
+============================================= -->
+<nav class="barra-inferior" role="navigation" aria-label="Navegación principal">
+
+    <button class="btn-menu" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <a href="#hero" class="barra-logo" id="barraLogo" aria-label="Volver al inicio">
+
+          <img src="assets/images/logo.svg" alt="Nuberu" height="28" />
+    </a>
+
+    <a href="reservas.html" class="btn-reservar" role="button">Reservar</a>
+
+</nav>
+
+
+<!-- ============================================
+     MENÚ OVERLAY — PANTALLA COMPLETA
+============================================= -->
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+    <div class="menu-columnas">
+
+        <div class="menu-columna">
+            <p class="menu-columna-titulo">Restaurante</p>
+            <a href="restaurante.html#menu"    class="menu-item">Menú</a>
+            <a href="restaurante.html#eventos" class="menu-item">Eventos</a>
+            <a href="reservas.html"            class="menu-item">Reservas</a>
+        </div>
+
+        <div class="menu-columna">
+            <p class="menu-columna-titulo">Galería</p>
+            <a href="galeria.html#exposiciones"      class="menu-item">Exposiciones</a>
+            <a href="galeria.html#artistas"          class="menu-item">Artistas</a>
+            <a href="galeria.html#programa-creacion" class="menu-item">Programa de creación</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ============================================
+     SECCIÓN 1: HERO
+============================================= -->
+<section id="hero" aria-label="Portada">
+
+    <div class="hero-bg">
+        <!--
+          PRODUCCIÓN: añadir en main.css dentro de .hero-bg:
+          background-image: url('../assets/images/hero-bg.jpg');
+        -->
+    </div>
+
+    <div class="hero-logo" id="heroLogo" aria-label="Nuberu">
+
+          <img src="assets/images/logo.svg"
+               alt="Nuberu"
+               style="width: 90vw; max-width: 1400px;" />
+    </div>
+
+    <div class="hero-manuscrito" aria-label="El arte de alterar">
+        <!--
+          PRODUCCIÓN: sustituir por:
+          <img src="assets/images/texto-el-arte-de-alterar.png"
+               alt="El arte de alterar"
+               style="width: clamp(240px, 35vw, 560px);" />
+        -->
+        <p class="hero-manuscrito-placeholder">
+            El arte<br>de alterar
+        </p>
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     SECCIÓN 2: INTRO
+============================================= -->
+<section id="intro" aria-label="Restaurante y Galería">
+
+    <div>
+        <div class="intro-imagen">
+
+              <img src="assets/images/restaurante-interior.png" alt="Interior del restaurante Nuberu" />
+        </div>
+        <p class="intro-imagen-label">RESTAURANTE</p>
+    </div>
+
+    <div class="intro-centro">
+        <!--
+          PRODUCCIÓN: sustituir por:
+          <img src="assets/images/el-arte-de-alterar-centro.png"
+               alt="El arte de alterar"
+               style="width: clamp(160px, 22vw, 340px);" />
+        -->
+        <p class="intro-manuscrito-placeholder">El arte<br>de alterar</p>
+    </div>
+
+    <div class="intro-derecha">
+        <div class="intro-imagen">
+              <img src="assets/images/galeria.png" alt="Pieza de la Galería Nuberu" />
+        </div>
+        <p class="intro-imagen-label">GALERÍA</p>
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     SECCIÓN 3: FILOSOFÍA
+============================================= -->
+<section id="filosofia" aria-label="Filosofía">
+
+    <div class="filosofia-texto">
+        <!--
+          PRODUCCIÓN: sustituir el h2 por:
+          <img src="assets/images/gastronomia-arte-circulares.png"
+               alt="Gastronomía y arte circulares"
+               style="max-width: 600px; margin: 0 auto 24px;" />
+        -->
+        <h2 class="filosofia-titulo">Gastronomía y arte circulares</h2>
+        <p class="filosofia-subtexto">
+            Todas las obras expuestas en la galería han sido creadas por artistas locales
+            con materiales creados a partir de desechos del restaurante
+        </p>
+    </div>
+
+    <div class="filosofia-imagen">
+        <!--
+          PRODUCCIÓN:
+          <img src="assets/images/imagen-filosofia.jpg" alt="Gastronomía y arte en Nuberu" />
+        -->
+        <div class="filosofia-imagen-placeholder">
+            [ imagen estática — assets/images/imagen-filosofia.jpg ]
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     SECCIÓN 4: ACTUALIDAD
+============================================= -->
+<section id="actualidad" aria-label="Actualidad">
+
+    <div class="actualidad-bloque">
+        <p class="actualidad-etiqueta">Evento</p>
+        <p class="actualidad-fecha">20 – 27 / 06</p>
+        <h2 class="actualidad-titulo">Gamonéu<br>Live</h2>
+        <p class="actualidad-descripcion">
+            Cata de Gamonéu con pintura improvisada<br>en vivo de María Ramírez
+        </p>
+        <a href="restaurante.html#eventos" class="btn-saber-mas">Saber más</a>
+    </div>
+
+    <div class="actualidad-bloque">
+        <p class="actualidad-etiqueta">Exposición actual</p>
+        <p class="actualidad-fecha">15 / 06 – 15 / 07</p>
+        <h2 class="actualidad-titulo">Salar</h2>
+        <p class="actualidad-subtitulo">Kai Salem</p>
+        <a href="galeria.html#exposiciones" class="btn-saber-mas">Saber más</a>
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     SECCIÓN 5: MAPA INTERACTIVO
+============================================= -->
+<section id="mapa" aria-label="Plano del espacio">
+
+    <div class="mapa-contenedor" id="mapaContenedor">
+
+        <!--
+          PRODUCCIÓN: sustituir el placeholder por:
+          <img src="assets/images/mapa-plano.png"
+               alt="Plano del espacio Nuberu"
+               class="mapa-imagen" />
+
+          Luego ajustar left/top de cada .mapa-punto en main.css
+          con porcentajes sobre tu imagen real del plano.
+        -->
+        <div class="mapa-placeholder">
+            <img src="assets/images/plano-nuberu.png"
+                 alt="Plano del espacio Nuberu"
+                 class="mapa-imagen" />
+        </div>
+
+        <!-- PUNTO 1: Galería -->
+        <div class="mapa-punto punto-rosa" role="button" tabindex="0" aria-label="GALERÍA">
+            <div class="mapa-tooltip">
+                <img src="assets/images/galeria.png" class="mapa-tooltip-imagen" alt="Bar" />
+                <div class="mapa-tooltip-label">
+                    <p class="mapa-tooltip-titulo">GALERÍA</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PUNTO 2: TIENDA -->
+        <div class="mapa-punto punto-rosa-2" role="button" tabindex="0" aria-label="TIENDA">
+            <div class="mapa-tooltip">
+                <img src="assets/images/tienda.png" class="mapa-tooltip-imagen" alt="Tienda" />
+                <div class="mapa-tooltip-label">
+                    <p class="mapa-tooltip-titulo">TIENDA</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PUNTO 3: RESTAURANTE -->
+        <div class="mapa-punto punto-azul" role="button" tabindex="0" aria-label="RESTAURANTE">
+            <div class="mapa-tooltip">
+                <img src="assets/images/restaurante-interior.png" class="mapa-tooltip-imagen" alt="Salón de reuniones" />
+                <div class="mapa-tooltip-label">
+                    <p class="mapa-tooltip-titulo">RESTAURANTE</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PUNTO 4: Terraza -->
+        <div class="mapa-punto punto-verde" role="button" tabindex="0" aria-label="Terraza">
+            <div class="mapa-tooltip">
+                <img src="assets/images/terraza.png" class="mapa-tooltip-imagen" alt="Terraza" /> -->
+                <div class="mapa-tooltip-label">
+                    <p class="mapa-tooltip-titulo">TERRAZA</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PUNTO 5: Reuniones -->
+        <div class="mapa-punto punto-mostaza" role="button" tabindex="0" aria-label="Salón de reuniones">
+            <div class="mapa-tooltip">
+                <img src="assets/images/sala-de-reuniones.png" class="mapa-tooltip-imagen" alt="Galería" />
+                <div class="mapa-tooltip-label">
+                    <p class="mapa-tooltip-titulo">SALÓN DE REUNIONES</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PUNTO 6: COCINA -->
+        <div class="mapa-punto punto-salmon" role="button" tabindex="0" aria-label="COCINA">
+            <div class="mapa-tooltip">
+                <img src="assets/images/COCINA.png" class="mapa-tooltip-imagen" alt="Cocina" />
+                <div class="mapa-tooltip-label">
+                    <p class="mapa-tooltip-titulo">COCINA</p>
+                </div>
+            </div>
+        </div>
+        <!-- PUNTO: Bar -->
+        <div class="mapa-punto punto-rojo" role="button" tabindex="0" aria-label="Bar">
+            <div class="mapa-tooltip">
+                <img src="assets/images/bar.png" class="mapa-tooltip-imagen" alt="Bar" />
+                <div class="mapa-tooltip-label">
+                    <p class="mapa-tooltip-titulo">Bar</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PUNTO: Baño -->
+        <div class="mapa-punto punto-beige" role="button" tabindex="0" aria-label="Baño">
+            <div class="mapa-tooltip">
+                <img src="assets/images/bano.png" class="mapa-tooltip-imagen" alt="Baño" />
+                <div class="mapa-tooltip-label">
+                    <p class="mapa-tooltip-titulo">Baño</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mapa-ctas">
+        <a href="restaurante.html" class="btn-outline">Ver Restaurante</a>
+        <a href="galeria.html"     class="btn-outline">Ver Galería</a>
+    </div>
+
+</section>
+
+
+<!-- JS al final del body para no bloquear la carga del HTML -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
