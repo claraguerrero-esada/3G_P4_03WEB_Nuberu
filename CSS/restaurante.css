@@ -102,8 +102,7 @@
 }
 
 .rest-menu__categoria {
-    font-size: 13px;
-    letter-spacing: 0.18em;
+    font-size: 25px;
     text-transform: uppercase;
     font-weight: 400;
     margin-bottom: 24px;
@@ -176,6 +175,7 @@
 .ingrediente-tooltip__img-wrap {
     aspect-ratio: 1;
     overflow: hidden;
+    padding: 12px 0 12px 12px;
 }
 
 .ingrediente-tooltip__img-wrap img {
