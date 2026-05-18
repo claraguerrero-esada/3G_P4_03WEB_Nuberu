@@ -11,7 +11,7 @@
 // - Al hacer click en el botón hamburguesa se añade
 //   la clase .menu-abierto al <body>
 // - Esa clase activa el overlay y transforma las
-//   líneas del botón en una X mediante CSS puro
+//   líneas del botón en una X mediante css puro
 // - Se bloquea el scroll del body mientras está abierto
 // --------------------------------------------------
 const btnMenu     = document.getElementById('btnMenu');
