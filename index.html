@@ -147,13 +147,9 @@
     </div>
 
     <div class="filosofia-imagen">
-        <!--
-          PRODUCCIÓN:
-          <img src="assets/images/imagen-filosofia.jpg" alt="Gastronomía y arte en Nuberu" />
-        -->
-        <div class="filosofia-imagen-placeholder">
-            [ imagen estática — assets/images/imagen-filosofia.jpg ]
-        </div>
+
+        <div>
+            <img src="assets/images/ciclo-nuberu.png" alt="Gastronomía y arte en Nuberu" />        </div>
     </div>
 
 </section>
@@ -192,15 +188,6 @@
 
     <div class="mapa-contenedor" id="mapaContenedor">
 
-        <!--
-          PRODUCCIÓN: sustituir el placeholder por:
-          <img src="assets/images/mapa-plano.png"
-               alt="Plano del espacio Nuberu"
-               class="mapa-imagen" />
-
-          Luego ajustar left/top de cada .mapa-punto en main.css
-          con porcentajes sobre tu imagen real del plano.
-        -->
         <div class="mapa-placeholder">
             <img src="assets/images/plano-nuberu.png"
                  alt="Plano del espacio Nuberu"
@@ -208,95 +195,112 @@
         </div>
 
         <!-- PUNTO 1: Galería -->
-        <div class="mapa-punto punto-rosa punto-abajo" role="button" tabindex="0" aria-label="GALERÍA">
+        <div class="mapa-punto punto-rosa punto-abajo" role="button" tabindex="0" aria-label="GALERÍA" data-tooltip-shift="8" data-hover-radius="48">
             <div class="mapa-tooltip">
-                <img src="assets/images/galeria.png" class="mapa-tooltip-imagen" alt="Bar" />
-                <div class="mapa-tooltip-label">
-                    <p class="mapa-tooltip-titulo">GALERÍA</p>
+                <div class="mapa-tooltip-media">
+                    <img src="assets/images/galeria.png" class="mapa-tooltip-imagen" alt="Bar" />
                 </div>
-            </div>
-        </div>
+                 <div class="mapa-tooltip-label">
+                     <p class="mapa-tooltip-titulo">GALERÍA</p>
+                 </div>
+             </div>
+         </div>
 
-        <!-- PUNTO 2: TIENDA -->
-        <div class="mapa-punto punto-rosa-2 punto-abajo" role="button" tabindex="0" aria-label="TIENDA">
-            <div class="mapa-tooltip">
-                <img src="assets/images/tienda.png" class="mapa-tooltip-imagen" alt="Tienda" />
-                <div class="mapa-tooltip-label">
-                    <p class="mapa-tooltip-titulo">TIENDA</p>
+         <!-- PUNTO 2: TIENDA -->
+         <div class="mapa-punto punto-rosa-2 punto-abajo" role="button" tabindex="0" aria-label="TIENDA" data-tooltip-shift="8" data-hover-radius="48">
+             <div class="mapa-tooltip">
+                <div class="mapa-tooltip-media">
+                    <img src="assets/images/tienda.png" class="mapa-tooltip-imagen" alt="Tienda" />
                 </div>
-            </div>
-        </div>
+                 <div class="mapa-tooltip-label">
+                     <p class="mapa-tooltip-titulo">TIENDA</p>
+                 </div>
+             </div>
+         </div>
 
-        <!-- PUNTO 3: RESTAURANTE -->
-        <div class="mapa-punto punto-azul" role="button" tabindex="0" aria-label="RESTAURANTE">
-            <div class="mapa-tooltip">
-                <img src="assets/images/restaurante-interior.png" class="mapa-tooltip-imagen" alt="Salón de reuniones" />
-                <div class="mapa-tooltip-label">
-                    <p class="mapa-tooltip-titulo">RESTAURANTE</p>
+         <!-- PUNTO 3: RESTAURANTE -->
+         <div class="mapa-punto punto-azul" role="button" tabindex="0" aria-label="RESTAURANTE" data-tooltip-shift="28" data-hover-radius="48">
+             <div class="mapa-tooltip">
+                <div class="mapa-tooltip-media">
+                    <img src="assets/images/restaurante-interior.png" class="mapa-tooltip-imagen" alt="Salón de reuniones" />
                 </div>
-            </div>
-        </div>
+                 <div class="mapa-tooltip-label">
+                     <p class="mapa-tooltip-titulo">RESTAURANTE</p>
+                 </div>
+             </div>
+         </div>
 
-        <!-- PUNTO 4: Terraza -->
-        <div class="mapa-punto punto-verde" role="button" tabindex="0" aria-label="Terraza">
-            <div class="mapa-tooltip">
-                <img src="assets/images/terraza.png" class="mapa-tooltip-imagen" alt="Terraza" />
-                <div class="mapa-tooltip-label">
-                    <p class="mapa-tooltip-titulo">TERRAZA</p>
+         <!-- PUNTO 4: Terraza -->
+         <div class="mapa-punto punto-verde" role="button" tabindex="0" aria-label="Terraza" data-tooltip-shift="28" data-hover-radius="48">
+             <div class="mapa-tooltip">
+                <div class="mapa-tooltip-media">
+                    <img src="assets/images/terraza.png" class="mapa-tooltip-imagen" alt="Terraza" />
                 </div>
-            </div>
-        </div>
+                 <div class="mapa-tooltip-label">
+                     <p class="mapa-tooltip-titulo">TERRAZA</p>
+                 </div>
+             </div>
+         </div>
 
-        <!-- PUNTO 5: Reuniones -->
-        <div class="mapa-punto punto-mostaza" role="button" tabindex="0" aria-label="Salón de reuniones">
-            <div class="mapa-tooltip">
-                <img src="assets/images/sala-de-reuniones.png" class="mapa-tooltip-imagen" alt="Galería" />
-                <div class="mapa-tooltip-label">
-                    <p class="mapa-tooltip-titulo">SALÓN DE REUNIONES</p>
+         <!-- PUNTO 5: Reuniones -->
+         <div class="mapa-punto punto-mostaza" role="button" tabindex="0" aria-label="Salón de reuniones" data-tooltip-shift="36" data-hover-radius="48">
+             <div class="mapa-tooltip">
+                <div class="mapa-tooltip-media">
+                    <img src="assets/images/sala-de-reuniones.png" class="mapa-tooltip-imagen" alt="Galería" />
                 </div>
-            </div>
-        </div>
+                 <div class="mapa-tooltip-label">
+                     <p class="mapa-tooltip-titulo">SALÓN DE REUNIONES</p>
+                 </div>
+             </div>
+         </div>
 
-        <!-- PUNTO 6: COCINA -->
-        <div class="mapa-punto punto-salmon" role="button" tabindex="0" aria-label="COCINA">
-            <div class="mapa-tooltip">
-                <img src="assets/images/COCINA.png" class="mapa-tooltip-imagen" alt="Cocina" />
-                <div class="mapa-tooltip-label">
-                    <p class="mapa-tooltip-titulo">COCINA</p>
+         <!-- PUNTO 6: COCINA -->
+         <div class="mapa-punto punto-salmon" role="button" tabindex="0" aria-label="COCINA" data-tooltip-shift="36" data-hover-radius="48">
+             <div class="mapa-tooltip">
+                <div class="mapa-tooltip-media">
+                    <img src="assets/images/COCINA.png" class="mapa-tooltip-imagen" alt="Cocina" />
                 </div>
-            </div>
-        </div>
-        <!-- PUNTO: Bar -->
-        <div class="mapa-punto punto-rojo" role="button" tabindex="0" aria-label="Bar">
-            <div class="mapa-tooltip">
-                <img src="assets/images/bar.png" class="mapa-tooltip-imagen" alt="Bar" />
-                <div class="mapa-tooltip-label">
-                    <p class="mapa-tooltip-titulo">Bar</p>
+                 <div class="mapa-tooltip-label">
+                     <p class="mapa-tooltip-titulo">COCINA</p>
+                 </div>
+             </div>
+         </div>
+         <!-- PUNTO: Bar -->
+         <div class="mapa-punto punto-rojo" role="button" tabindex="0" aria-label="Bar" data-tooltip-shift="36" data-hover-radius="48">
+             <div class="mapa-tooltip">
+                <div class="mapa-tooltip-media">
+                    <img src="assets/images/bar.png" class="mapa-tooltip-imagen" alt="Bar" />
                 </div>
-            </div>
-        </div>
+                 <div class="mapa-tooltip-label">
+                     <p class="mapa-tooltip-titulo">Bar</p>
+                 </div>
+             </div>
+         </div>
 
-        <!-- PUNTO: Baño -->
-        <div class="mapa-punto punto-beige" role="button" tabindex="0" aria-label="Baño">
-            <div class="mapa-tooltip">
-                <img src="assets/images/bano.png" class="mapa-tooltip-imagen" alt="Baño" />
-                <div class="mapa-tooltip-label">
-                    <p class="mapa-tooltip-titulo">Baño</p>
+         <!-- PUNTO: Baño -->
+         <div class="mapa-punto punto-beige" role="button" tabindex="0" aria-label="Baño" data-tooltip-shift="36" data-hover-radius="48">
+             <div class="mapa-tooltip">
+                <div class="mapa-tooltip-media">
+                    <img src="assets/images/bano.png" class="mapa-tooltip-imagen" alt="Baño" />
                 </div>
-            </div>
-        </div>
-    </div>
+                 <div class="mapa-tooltip-label">
+                     <p class="mapa-tooltip-titulo">Baño</p>
+                 </div>
+             </div>
+         </div>
+     </div>
 
-    <div class="mapa-ctas">
-        <a href="restaurante.html" class="btn-outline">Ver Restaurante</a>
-        <a href="galeria.html"     class="btn-outline">Ver Galería</a>
-    </div>
+     <div class="mapa-ctas">
+         <a href="restaurante.html" class="btn-outline">Ver Restaurante</a>
+         <a href="galeria.html"     class="btn-outline">Ver Galería</a>
+     </div>
 
-</section>
+ </section>
 
 
-<!-- js al final del body para no bloquear la carga del HTML -->
-<script src="js/main.js"></script>
+ <!-- js al final del body para no bloquear la carga del HTML -->
+ <script src="js/main.js"></script>
 
-</body>
-</html>
+ </body>
+ </html>
+

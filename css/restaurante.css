@@ -32,9 +32,6 @@
 
 /* =============================================
    INTRO STICKY
-   "Restaurante" permanece fija arriba mientras
-   el usuario hace scroll por toda la página.
-   Técnica: position: sticky en el label.
 ============================================= */
 .rest-intro {
     position: relative;
@@ -60,6 +57,10 @@
 
 .rest-intro__imagen {
     width: 100%;
+    object-fit: cover;
+
+    height: auto;
+    display: block;
 }
 
 .rest-intro__imagen img {
@@ -85,7 +86,6 @@
 .rest-menu__titulo {
     font-size: clamp(28px, 4vw, 52px);
     font-weight: 400;
-    letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-bottom: 12px;
 }
@@ -234,12 +234,12 @@
 }
 
 /* Colores de fondo por tipo */
-.ingrediente-tooltip__inner--amarillo { background: #d4a843; }
-.ingrediente-tooltip__inner--azul     { background: #3a6fd4; }
-.ingrediente-tooltip__inner--rosa     { background: #e8567a; }
-.ingrediente-tooltip__inner--rojo     { background: #b03030; }
-.ingrediente-tooltip__inner--naranja  { background: #d47830; }
-.ingrediente-tooltip__inner--verde    { background: #3d7a5f; }
+.ingrediente-tooltip__inner--amarillo { background: #f1bc00; }
+.ingrediente-tooltip__inner--azul     { background: #045580; }
+.ingrediente-tooltip__inner--rosa     { background: #d4517e; }
+.ingrediente-tooltip__inner--rojo     { background: #8b2e2e; }
+.ingrediente-tooltip__inner--naranja  { background: #fb723f; }
+.ingrediente-tooltip__inner--verde    { background: #226f4d; }
 
 /* =============================================
    PEREGRINAJE
@@ -296,6 +296,7 @@
     color: var(--gris-texto);
     margin-bottom: 20px;
 }
+
 
 /* =============================================
    EVENTOS

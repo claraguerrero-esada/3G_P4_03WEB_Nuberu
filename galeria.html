@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuberu — Galería</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/galeria.css" />
+</head>
+<body>
+
+<!-- ============================================
+     BARRA FIJA INFERIOR
+============================================= -->
+<nav class="barra-inferior" role="navigation" aria-label="Navegación principal">
+
+    <button class="btn-menu" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <a href="index.html" class="barra-logo barra-logo--visible" id="barraLogo" aria-label="Volver al inicio">
+        <img src="assets/images/logo.svg" alt="Nuberu" height="28" />
+    </a>
+
+    <a href="reservas.html" class="btn-reservar" role="button">Reservar</a>
+
+</nav>
+
+
+<!-- ============================================
+     MENÚ OVERLAY — PANTALLA COMPLETA
+============================================= -->
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+    <div class="menu-columnas">
+
+        <div class="menu-columna">
+            <a href="restaurante.html" class="menu-titulo">Restaurante</a>
+            <a href="restaurante.html#menu"    class="menu-item">Menú</a>
+            <a href="restaurante.html#eventos" class="menu-item">Eventos</a>
+            <a href="reservas.html#proveedores" class="menu-item">Productos</a>
+        </div>
+
+        <div class="menu-columna">
+            <a href="galeria.html" class="menu-titulo">Galería</a>
+            <a href="galeria.html#exposiciones"      class="menu-item">Exposiciones</a>
+            <a href="galeria.html#artistas"          class="menu-item">Artistas</a>
+            <a href="galeria.html#programa-creacion" class="menu-item">Creación</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ============================================
+     ETIQUETA FIJA: GALERÍA
+============================================= -->
+<a class="gal-label-fijo" aria-hidden="true" href="galeria.html">Galería</a>
+
+
+<!-- ============================================
+     SECCIÓN 1: INTRO
+     Texto e imagen son un único archivo de imagen
+============================================= -->
+<section id="gal-intro" aria-label="Introducción Galería">
+    <div class="gal-intro__imagen">
+        <!--
+          PRODUCCIÓN: reemplazar por:
+          <img src="assets/images/galeria-intro.png"
+               alt="Galería Nuberu — espacio de creación y exposición"
+               class="gal-intro__img" />
+        -->
+        <div class="gal-placeholder gal-placeholder--intro">
+            <span>IMAGEN INTRO<br>(texto + imagen integrados)</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================
+     SECCIÓN 2: EXPOSICIÓN ACTUAL
+============================================= -->
+<section id="exposiciones" aria-label="Exposición actual">
+
+    <div class="gal-expo">
+
+        <!-- Columna izquierda: texto -->
+        <div class="gal-expo__texto">
+            <p class="gal-expo__etiqueta">Exposición actual</p>
+            <p class="gal-expo__fechas">15 / 06 – 15 / 07</p>
+            <h1 class="gal-expo__titulo">Salar</h1>
+            <p class="gal-expo__artista-nombre">Kai Salem</p>
+            <p class="gal-expo__descripcion">
+                SALAR transforma materiales orgánicos en una colección de piezas donde la memoria del territorio aparece cristalizada, agrietada y suspendida en el tiempo. La exposición explora la relación entre conservación, desgaste y ritual a través de instalaciones matéricas construidas con residuos alimentarios procesados e intervenidas mediante procesos de evaporación, oxidación y cristalización.
+            </p>
+            <p class="gal-expo__descripcion"> Entre referencias al paisaje asturiano, la artesanía tradicional y la estética contemporánea, SALAR plantea una pregunta constante:
+            </p>
+            <p class="gal-expo__descripcion"> ¿qué merece ser conservado?
+            </p>
+            <p class="gal-expo__nota"> Acceso incluido para comensales durante el servicio
+            </p>
+            <a href="reservas.html" class="btn-saber-mas">Reservar visita</a>
+        </div>
+
+        <!-- Columna derecha: imagen -->
+        <div class="gal-expo__imagen">
+
+              <img src="assets/images/salar-comp.png"
+                   alt="Salar — Kai Salem" />
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     SECCIÓN 3: EL ARTISTA
+============================================= -->
+<section id="gal-artista" aria-label="El artista">
+
+    <div class="gal-artista">
+
+        <!-- 1 columna: imagen -->
+        <div class="gal-artista__imagen">
+              <img src="assets/images/kai-salem.png"
+                   alt="Kai Salem" />
+        </div>
+
+        <!-- 3 columnas: texto -->
+        <div class="gal-artista__texto">
+            <p class="gal-expo__etiqueta">El artista</p>
+            <h2 class="gal-artista__nombre">
+                <a href="https://www.instagram.com/kai_okai/" target="_blank" rel="noopener" class="gal-artista__nombre-link">
+                    Kai Salem
+                </a>
+            </h2>
+            <p class="gal-artista__bio">
+                Kai Salem trabaja en la intersección entre la materia orgánica y el gesto pictórico.
+                Su práctica parte del residuo como punto de origen: lo que se desecha en la cocina
+                se convierte en pigmento, textura, forma.
+            </p>
+            <p class="gal-artista__bio">
+                Nacido en el País Vasco, formado entre Bilbao y Berlín, su obra ha sido expuesta
+                en espacios de toda Europa. Nuberu es su primer trabajo en el que el material
+                proviene exclusivamente de un único espacio gastronómico.
+            </p>
+            <p class="gal-artista__bio">
+                "La sal que sobra del plato no desaparece. Solo cambia de forma."
+            </p>
+        </div>
+
+    </div>
+
+</section>
+<!-- ============================================
+     SECCIÓN 3.2: Proxima exposición
+============================================= -->
+<section id="gal-prox" aria-label="Próxima exposición">
+    <div class="gal-expo__texto"> <h1 class="gal-expo__titulo">NACARÉS</h1> </div>
+    <div class="gal-intro__imagen">
+          <img src="assets/images/nacares.png"
+               alt="Galería Nuberu — espacio de creación y exposición"
+               class="gal-intro__img" />
+
+    </div>
+</section>
+
+
+<!-- ============================================
+     SECCIÓN 4: RED DE ARTISTAS
+============================================= -->
+<section id="artistas" aria-label="Red de artistas">
+
+    <div class="gal-red">
+
+        <div class="gal-red__cabecera">
+            <h2 class="gal-red__titulo">Red de artistas</h2>
+            <p class="gal-red__subtexto">
+                Nuberu trabaja con artistas locales que transforman los residuos del restaurante
+                en obra. Cada temporada, nuevas colaboraciones.
+            </p>
+        </div>
+
+        <div class="gal-red__grid">
+
+            <div class="gal-artista-card">
+                <div class="gal-placeholder gal-placeholder--card">
+                    <span>IMAGEN</span>
+                </div>
+                <p class="gal-artista-card__nombre">Lucía Fidalgo</p>
+                <p class="gal-artista-card__disciplina">Cerámica</p>
+            </div>
+
+            <div class="gal-artista-card">
+                <div class="gal-placeholder gal-placeholder--card">
+                    <span>IMAGEN</span>
+                </div>
+                <p class="gal-artista-card__nombre">Martín Abad</p>
+                <p class="gal-artista-card__disciplina">Escultura</p>
+            </div>
+
+            <div class="gal-artista-card">
+                <div class="gal-placeholder gal-placeholder--card">
+                    <span>IMAGEN</span>
+                </div>
+                <p class="gal-artista-card__nombre">Vera Somoza</p>
+                <p class="gal-artista-card__disciplina">Pintura</p>
+            </div>
+
+            <div class="gal-artista-card">
+                <div class="gal-placeholder gal-placeholder--card">
+                    <span>IMAGEN</span>
+                </div>
+                <p class="gal-artista-card__nombre">Iñaki Larrañaga</p>
+                <p class="gal-artista-card__disciplina">Fotografía</p>
+            </div>
+
+            <div class="gal-artista-card">
+                <div class="gal-placeholder gal-placeholder--card">
+                    <span>IMAGEN</span>
+                </div>
+                <p class="gal-artista-card__nombre">Amara Díez</p>
+                <p class="gal-artista-card__disciplina">Textil</p>
+            </div>
+
+            <div class="gal-artista-card">
+                <div class="gal-placeholder gal-placeholder--card">
+                    <span>IMAGEN</span>
+                </div>
+                <p class="gal-artista-card__nombre">Sergio Pallás</p>
+                <p class="gal-artista-card__disciplina">Instalación</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================
+     SECCIÓN 5: PROGRAMA DE CREACIÓN
+============================================= -->
+<section id="programa-creacion" aria-label="Programa de creación">
+
+    <div class="gal-programa">
+
+        <div class="gal-programa__texto">
+            <p class="gal-expo__etiqueta">Programa de creación</p>
+            <h2 class="gal-programa__titulo">Residencias en Nuberu</h2>
+            <p class="gal-programa__descripcion">
+                Dos veces al año seleccionamos a un artista para una residencia de tres semanas.
+                El artista trabaja en el restaurante, vive el ciclo de la cocina y crea obra
+                a partir de los residuos de ese período.
+            </p>
+            <p class="gal-programa__descripcion">
+                La obra resultante se expone en la galería durante la temporada siguiente
+                y el proceso queda documentado en una publicación de tirada limitada.
+            </p>
+            <a href="mailto:talento@nuberu.es"
+               class="btn-saber-mas"
+               aria-label="Enviar mensaje a talento@nuberu.es">
+                Enviar mensaje
+            </a>
+        </div>
+
+        <div class="gal-programa__imagen">
+            <!--
+              PRODUCCIÓN: reemplazar por:
+              <img src="assets/images/programa-creacion.png"
+                   alt="Programa de residencias Nuberu" />
+            -->
+            <div class="gal-placeholder gal-placeholder--programa">
+                <span>IMAGEN<br>PROGRAMA</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="js/main.js"></script>
+<script src="js/galeria.js"></script>
+
+</body>
+</html>

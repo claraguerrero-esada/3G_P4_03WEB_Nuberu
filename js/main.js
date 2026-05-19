@@ -57,6 +57,9 @@ const barraLogo = document.getElementById('barraLogo');
 const hero      = document.getElementById('hero');
 
 function gestionarScroll() {
+    // Guard: si no hay hero en esta página, no hacer nada
+    if (!hero || !heroLogo || !barraLogo) return;
+
     const umbral = hero.offsetHeight * 0.7;
 
     if (window.scrollY > umbral) {
@@ -101,36 +104,6 @@ const puntos = document.querySelectorAll('.mapa-punto');
 const tooltipsMovidos = new Map(); // Almacenar tooltips movidos
 let tooltipTimeout = null; // Para evitar flickering
 
-// Función para calcular la posición del tooltip
-function posicionarTooltip(punto, tooltip) {
-    const rect = punto.getBoundingClientRect();
-    const tooltipHeight = 340; // Altura aproximada del tooltip
-    const tooltipWidth = 220;
-    const padding = 5; // Espaciado extra grande para alejar el tooltip hacia arriba
-
-    // Determinar si el tooltip debe ir hacia arriba o abajo
-    // Los puntos con clase .punto-abajo van hacia abajo
-    const irHaciaAbajo = punto.classList.contains('punto-abajo');
-
-    let top, left;
-
-    if (irHaciaAbajo) {
-        // Tooltip debajo del punto
-        top = rect.bottom + padding;
-    } else {
-        // Tooltip encima del punto - añadir extra distancia para alejar el tooltip
-        top = rect.top - tooltipHeight - padding;
-    }
-
-    // Centrado horizontalmente (restar la mitad del ancho del tooltip)
-    left = rect.left + (rect.width / 2) - (tooltipWidth / 2);
-
-    tooltip.style.position = 'fixed';
-    tooltip.style.top = top + 'px';
-    tooltip.style.left = left + 'px';
-    tooltip.style.zIndex = '9999';
-}
-
 // Mover tooltips al body
 puntos.forEach(function (punto) {
     const tooltip = punto.querySelector('.mapa-tooltip');
@@ -143,6 +116,11 @@ puntos.forEach(function (punto) {
 
         // Remover el tooltip original del punto
         tooltip.remove();
+
+        // Nota: NO añadimos listeners sobre el tooltip clonado. Mantener
+        // los tooltips como `pointer-events: none` evita que intercepten
+        // el cursor y provoquen parpadeos; la visibilidad se controla
+        // únicamente desde los eventos del punto.
     }
 
     // Accesibilidad: activar con teclado
@@ -168,7 +146,24 @@ puntos.forEach(function (punto) {
     });
 
     // Desktop: hover activa el tooltip
-    punto.addEventListener('mouseenter', function () {
+    punto.addEventListener('mouseenter', function (e) {
+        // Comprobar distancia desde el cursor al centro del punto para evitar activaciones
+        const rectCheck = punto.getBoundingClientRect();
+        const centerX = rectCheck.left + rectCheck.width / 2;
+        const centerY = rectCheck.top + rectCheck.height / 2;
+        const clientX = (e && e.clientX) ? e.clientX : (window.event && window.event.clientX) || centerX;
+        const clientY = (e && e.clientY) ? e.clientY : (window.event && window.event.clientY) || centerY;
+
+        const dx = clientX - centerX;
+        const dy = clientY - centerY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        const hoverRadius = parseInt(punto.getAttribute('data-hover-radius') || '40', 10) || 40; // px
+        if (dist > hoverRadius) {
+            // Ignorar la activación si el cursor no está suficientemente cerca del punto
+            return;
+        }
+
         // Limpiar timeout anterior (en caso de que estuviera esperando para desactivar)
         if (tooltipTimeout) clearTimeout(tooltipTimeout);
 
@@ -191,13 +186,29 @@ puntos.forEach(function (punto) {
             // Pequeño delay para evitar flickering si el cursor pasa sobre el tooltip
             tooltipTimeout = setTimeout(function () {
                 tooltipActual.classList.remove('activo');
-            }, 100);
+            }, 120);
         }
     });
 
     // Mobile: tap activa el tooltip
     punto.addEventListener('touchstart', function (e) {
         e.stopPropagation();
+
+        // Comprobar distancia en touch (si hay coordenadas)
+        const touch = e.touches && e.touches[0];
+        if (touch) {
+            const rectCheck = punto.getBoundingClientRect();
+            const centerX = rectCheck.left + rectCheck.width / 2;
+            const centerY = rectCheck.top + rectCheck.height / 2;
+            const dx = touch.clientX - centerX;
+            const dy = touch.clientY - centerY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const hoverRadius = parseInt(punto.getAttribute('data-hover-radius') || '40', 10) || 40; // px
+            if (dist > hoverRadius) {
+                // Ignorar si el touch está demasiado lejos
+                return;
+            }
+        }
 
         // Limpiar timeout anterior
         if (tooltipTimeout) clearTimeout(tooltipTimeout);
@@ -241,3 +252,41 @@ window.addEventListener('resize', function () {
         }
     });
 });
+
+
+// Función para calcular la posición del tooltip (definida después para visibilidad)
+function posicionarTooltip(punto, tooltip) {
+    const rect = punto.getBoundingClientRect();
+    const tooltipHeight = tooltip.offsetHeight || 340;
+    const tooltipWidth = tooltip.offsetWidth || 220;
+    const padding = 12;
+
+    const irHaciaAbajo = punto.classList.contains('punto-abajo');
+
+    // Permitir un ajuste manual por punto usando data-tooltip-shift (en px)
+    const shift = parseInt(punto.getAttribute('data-tooltip-shift') || '0', 10) || 0;
+
+    let top, left;
+
+    if (irHaciaAbajo) {
+        top = rect.bottom + padding + shift;
+    } else {
+        top = rect.top - tooltipHeight - padding - shift;
+    }
+
+    left = rect.left + (rect.width / 2) - (tooltipWidth / 2);
+
+    // Ajustar si se sale por los bordes
+    if (left + tooltipWidth > window.innerWidth - padding) {
+        left = window.innerWidth - tooltipWidth - padding;
+    }
+    if (left < padding) { left = padding; }
+    if (top < padding) { top = rect.bottom + padding; }
+
+    tooltip.style.position = 'fixed';
+    tooltip.style.top = top + 'px';
+    tooltip.style.left = left + 'px';
+    // Mantener por debajo del overlay de menú (z-index:10000)
+    tooltip.style.zIndex = '9999';
+    // No forzamos pointer-events aquí: lo controla la clase .activo en CSS
+}

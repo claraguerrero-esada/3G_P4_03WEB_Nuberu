@@ -44,7 +44,7 @@ const INGREDIENTES = {
     },
 
     'puerro': {
-        color: 'amarillo',
+        color: 'rosa',
         imagen: 'assets/images/ing-puerro.png',
         campos: {
             'Origen':      'Huerta de La Güeria, Cangas de Onís',
@@ -84,7 +84,7 @@ const INGREDIENTES = {
     },
 
     'guisantes': {
-        color: 'amarillo',
+        color: 'rosa',
         imagen: 'assets/images/ing-guisantes.png',
         campos: {
             'Origen':         'Huerta de La Güeria, Cangas de Onís',
@@ -98,7 +98,7 @@ const INGREDIENTES = {
     },
 
     'calabacín': {
-        color: 'amarillo',
+        color: 'rojo',
         imagen: 'assets/images/ing-calabacin.png',
         campos: {
             'Origen':      'Huerta de La Güeria, Cangas de Onís',
@@ -148,7 +148,7 @@ const INGREDIENTES = {
     },
 
     'zanahorias': {
-        color: 'amarillo',
+        color: 'rosa',
         imagen: 'assets/images/ing-zanahoria.png',
         campos: {
             'Origen':      'Huerta de La Güeria, Cangas de Onís',
@@ -187,7 +187,7 @@ const INGREDIENTES = {
     },
 
     'albaricoque': {
-        color: 'naranja',
+        color: 'rojo',
         imagen: 'assets/images/ing-albaricoque.png',
         campos: {
             'Origen':      'Huerta de La Güeria, Cangas de Onís',
@@ -200,7 +200,7 @@ const INGREDIENTES = {
     },
 
     'aceite-oliva': {
-        color: 'amarillo',
+        color: 'rosa',
         imagen: 'assets/images/ing-aceite.png',
         campos: {
             'Origen':      'Huerta de La Güeria, Cangas de Onís',
@@ -351,7 +351,7 @@ const INGREDIENTES = {
 
     // --- PUMARADA TÍU LLUIS — SIDRA (naranja) ---
     'sidra': {
-        color: 'naranja',
+        color: 'rosa',
         imagen: 'assets/images/ing-sidra.png',
         campos: {
             'Origen':      'Pumarada Tíu Lluis, Villaviciosa',

@@ -82,58 +82,31 @@ a {
     transition: transform 0.35s ease, opacity 0.25s ease;
     transform-origin: center;
 }
-
-body.menu-abierto .btn-menu span:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
-}
-body.menu-abierto .btn-menu span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-}
-body.menu-abierto .btn-menu span:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
-}
-
-.barra-logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-}
-
-.barra-logo.visible {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.barra-logo-texto {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-family: var(--fuente-cuerpo);
-}
-
-.btn-reservar {
-    background: var(--negro);
-    color: var(--blanco);
-    border: none;
+.btn-outline {
+    border: 1.5px solid var(--negro);
     border-radius: 100px;
-    padding: 10px 22px;
+    padding: 12px 32px;
     font-family: var(--fuente-cuerpo);
     font-size: 13px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    background: transparent;
     cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    display: inline-block;
 }
 
-.btn-reservar:hover {
-    background: #333;
-    transform: scale(1.03);
+.btn-outline:hover {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+/* CTAs bajo el mapa */
+.mapa-ctas {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 48px;
 }
 
 /* =============================================
@@ -377,10 +350,14 @@ body.menu-abierto .menu-overlay {
 
 #intro > div:first-child {
     transform: rotate(-5deg);
+    position: relative;
+    z-index: 1;
 }
 
 #intro .intro-derecha {
     transform: rotate(5deg);
+    position: relative;
+    z-index: 1;
 }
 
 /* =============================================
@@ -465,17 +442,13 @@ body.menu-abierto .menu-overlay {
 
 .actualidad-etiqueta {
     font-size: 11px;
-    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--gris-texto);
     margin-bottom: 8px;
 }
 
 .actualidad-fecha {
     font-size: 13px;
-    color: var(--gris-texto);
     margin-bottom: 12px;
-    letter-spacing: 0.04em;
 }
 
 .actualidad-titulo {
@@ -483,7 +456,6 @@ body.menu-abierto .menu-overlay {
     font-weight: 300;
     line-height: 0.95;
     margin-bottom: 16px;
-    letter-spacing: -0.01em;
 }
 
 .actualidad-subtitulo {
@@ -491,16 +463,17 @@ body.menu-abierto .menu-overlay {
     font-weight: 300;
     font-style: italic;
     color: var(--gris-texto);
-    margin-bottom: 8px;
+    margin-bottom: 32px;
 }
 
 .actualidad-descripcion {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 300;
     color: var(--gris-texto);
     line-height: 1.6;
     margin-bottom: 32px;
     max-width: 320px;
+    font-style: italic;
 }
 
 .btn-saber-mas {
@@ -531,6 +504,8 @@ body.menu-abierto .menu-overlay {
     max-width: 1400px;
     margin: 0 auto;
     isolation: isolate;
+    position: relative;
+    z-index: 2;
 }
 
 .mapa-contenedor {
@@ -566,7 +541,7 @@ body.menu-abierto .menu-overlay {
     border-radius: 50%;
     cursor: pointer;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: 3; /* estar por encima de la imagen pero POR DEBAJO del tooltip */
     transition: transform 0.2s ease;
 }
 
@@ -574,25 +549,29 @@ body.menu-abierto .menu-overlay {
 .mapa-punto::before {
     content: '';
     position: absolute;
-    width: 44px;
-    height: 44px;
+    /* Reducido para evitar solapamientos entre puntos */
+    width: 56px;
+    height: 56px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    pointer-events: auto;
+    pointer-events: auto; /* esta área sí captura el hover */
 }
 
-/* Área expandida hacia arriba para mantener hover al mover hacia el tooltip */
+/* El pseudo-elemento anterior que expandía mucho hacia arriba causaba
+   interacciones no deseadas (activaba puntos cuando el cursor pasaba
+   por encima de la zona del tooltip). Lo convertimos en no-interactuable
+   para que no interfiera con otros puntos. */
 .mapa-punto::after {
     content: '';
     position: absolute;
     width: 44px;
-    height: 420px;
-    top: -410px;
+    height: 0px; /* ya no ocupa zona vertical */
+    top: 50%;
     left: 50%;
     transform: translateX(-50%);
-    pointer-events: auto;
+    pointer-events: none; /* evitar que interfiera con eventos */
 }
 
 .mapa-punto:hover {
@@ -618,71 +597,83 @@ body.menu-abierto .menu-overlay {
     width: 220px;
     background: var(--blanco);
     opacity: 0;
+    /* No interacciona hasta estar activo */
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.3s ease;
     transform-origin: bottom center;
     /* Mantener sobre todo (incluso sobre overlay cuando no está activo) */
     z-index: 9999;
     border: 2px solid #000000;
-    display: none;
+    /* Evitar display:none para que offsetHeight/offsetWidth sean medibles
+       por JS al posicionar. Usaremos opacity y visibility. */
+    visibility: hidden;
+    padding: 0; /* sin padding: el padding solo va en .mapa-tooltip-label */
 }
 
 .mapa-tooltip.activo {
     opacity: 1;
-    pointer-events: auto;
-    display: block;
+    /* ahora sí puede recibir hover/clicks */
+    pointer-events: none;
+    /* Seguimos sin permitir pointer-events para que el tooltip no
+       sea interactivo y no interfiera con el mapa. Si en el futuro
+       necesita ser clicable, usar .mapa-tooltip.interactivo */
+    visibility: visible;
     transform: rotate(-2deg) scale(1);
+}
+
+/* Si en algún caso se necesita interactividad en el tooltip, usar esta clase */
+.mapa-tooltip.interactivo {
+    pointer-events: auto;
 }
 
 .mapa-tooltip-imagen {
     width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+    height: auto;
     display: block;
-    background: #c8c8c4;
+    object-fit: cover;
+    /* Forzar relación de aspecto 3:4; moderno y funciona en navegadores actuales */
+    aspect-ratio: 3 / 4;
+    max-height: 320px; /* fallback para evitar imágenes excesivamente altas */
+    margin-bottom: 10px; /* separación entre imagen y texto */
 }
 
 .mapa-tooltip-label {
-    padding: 10px 12px 12px;
+    padding: 12px 12px 12px; /* más espacio alrededor del texto */
     background: var(--blanco);
 }
 
 .mapa-tooltip-titulo {
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    font-size: 16px;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 300;
     color: var(--negro);
+    margin: 0;
 }
 
-/* Tooltips cerca del borde izquierdo — aparecen a la derecha */
-/* Estas reglas ya no aplican porque los tooltips están en el body */
-/* Se controla la posición completamente desde JavaScript */
+/* Asegurar que el tooltip NO tenga padding (la imagen toca el borde) */
+/* .mapa-tooltip padding se define arriba sin valor */
 
-/* CTAs bajo el mapa */
-.mapa-ctas {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 48px;
+.mapa-tooltip-media {
+    width: 100%;
+    /* Forzar proporción 3:4 para el contenedor; en navegadores sin support
+       aspect-ratio, usamos padding-bottom fallback (75% = 3/4) */
+    aspect-ratio: 3 / 4;
+    position: relative;
+    overflow: hidden;
+    background: #eaeaea;
 }
-
-.btn-outline {
-    border: 1.5px solid var(--negro);
-    border-radius: 100px;
-    padding: 12px 32px;
-    font-family: var(--fuente-cuerpo);
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: transparent;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    display: inline-block;
+.mapa-tooltip-media::before {
+    content: '';
+    display: block;
+    /* fallback para navegadores que no soporten aspect-ratio */
+    padding-bottom: 75%;
 }
-
-.btn-outline:hover {
-    background: var(--negro);
-    color: var(--blanco);
+.mapa-tooltip-media img.mapa-tooltip-imagen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* =============================================

@@ -1,0 +1,430 @@
+/* =============================================
+   NUBERU — galeria.css
+   Estilos específicos de la página galería
+   ============================================= */
+
+/* El logo en esta página siempre es visible
+   (no hay hero que lo oculte) */
+.barra-logo--visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* =============================================
+   ETIQUETA FIJA: GALERÍA
+   Mismo comportamiento que .rest-label-fijo
+============================================= */
+.gal-label-fijo {
+    position: fixed;
+    top: 60px;
+    left: 80px;
+    font-size: 20px;
+    color: var(--negro);
+    font-weight: 400;
+    z-index: 500;
+    pointer-events: none;
+}
+
+/* =============================================
+   PLACEHOLDERS (eliminar en producción)
+============================================= */
+.gal-placeholder {
+    background: #e8e8e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    border: 1px dashed #ccc;
+    width: 100%;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.gal-placeholder--intro   { height: 90vh; }
+.gal-placeholder--expo    { width: 100%; height: 100%; min-height: 600px; }
+.gal-placeholder--artista { aspect-ratio: 3/4; }
+.gal-placeholder--card    { aspect-ratio: 3/4; }
+.gal-placeholder--programa { aspect-ratio: 4/5; }
+
+/* =============================================
+   SECCIÓN 1: INTRO
+============================================= */
+#gal-intro {
+    width: 100%;
+    overflow: hidden;
+}
+
+.gal-intro__imagen {
+    width: 100%;
+}
+
+.gal-intro__img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* =============================================
+   SECCIÓN 2: EXPOSICIÓN ACTUAL
+============================================= */
+#exposiciones {
+    border-top: 1px solid #e0e0e0;
+}
+
+.gal-expo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: stretch;
+    min-height: 70vh;
+}
+
+/* Columna izquierda: texto */
+.gal-expo__texto {
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+}
+
+.gal-expo__etiqueta {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--negro);
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.gal-expo__fechas {
+    font-size: 13px;
+    color: var(--negro);
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.gal-expo__titulo {
+    font-size: 50px;
+    font-weight: 300;
+    line-height: 0.95;
+    color: var(--negro);
+    margin-bottom: 12px;
+}
+
+.gal-expo__artista-nombre {
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gris-texto);
+    margin-bottom: 32px;
+}
+
+.gal-expo__descripcion {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--negro);
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.gal-expo__nota {
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gris-texto);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    max-width: 600px;
+}
+
+/* Columna derecha: imagen */
+.gal-expo__imagen {
+    overflow: hidden;
+    position: relative;
+}
+
+.gal-expo__imagen img,
+.gal-expo__imagen .gal-placeholder--expo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =============================================
+   SECCIÓN 3: EL ARTISTA
+   Grid 1 + 3 columnas
+============================================= */
+#gal-artista {
+    border-top: 1px solid #e0e0e0;
+}
+
+.gal-artista {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 80px;
+    align-items: start;
+}
+
+.gal-artista__imagen img,
+.gal-artista__imagen .gal-placeholder--artista {
+    width: 100%;
+    display: block;
+}
+
+.gal-artista__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 8px;
+}
+
+.gal-artista__nombre {
+    font-size: clamp(36px, 4vw, 60px);
+    font-weight: 300;
+    color: var(--negro);
+    margin-bottom: 28px;
+    line-height: 1.05;
+}
+
+/* El nombre es un enlace a Instagram */
+.gal-artista__nombre-link {
+    font-size: 25px;
+    color: var(--negro);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    transition: opacity 0.2s;
+}
+
+.gal-artista__nombre-link:hover {
+    opacity: 0.55;
+}
+
+.gal-artista__bio {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 20px;
+    max-width: 900px;
+}
+
+.gal-artista__bio:last-child {
+    font-style: italic;
+    margin-bottom: 0;
+}
+/* =============================================
+   SECCIÓN 3.2: prox
+============================================= */
+#gal-prox {
+    border-top: 1px solid #e0e0e0;
+}
+
+
+/* =============================================
+   SECCIÓN 4: RED DE ARTISTAS
+============================================= */
+#artistas {
+    border-top: 1px solid #e0e0e0;
+}
+
+.gal-red {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 80px;
+}
+
+.gal-red__cabecera {
+    text-align: center;
+    display: grid;
+    gap: 40px;
+    margin-bottom: 72px;
+    align-items: start;
+}
+
+.gal-red__titulo {
+    text-align: center;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 300;
+    color: var(--negro);
+}
+
+.gal-red__subtexto {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gris-texto);
+    line-height: 1.75;
+    padding-top: 12px;
+    max-width: 660px;
+}
+
+.gal-red__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+}
+
+.gal-artista-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.gal-artista-card__nombre {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--negro);
+}
+
+.gal-artista-card__disciplina {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--gris-texto);
+    text-transform: uppercase;
+}
+
+/* =============================================
+   SECCIÓN 5: PROGRAMA DE CREACIÓN
+============================================= */
+#programa-creacion {
+    border-top: 1px solid #e0e0e0;
+}
+
+.gal-programa {
+    display: grid;
+    text-align: center;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.gal-programa__texto {
+    padding: 100px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+}
+
+.gal-programa__titulo {
+    font-size: clamp(36px, 4vw, 60px);
+    font-weight: 300;
+    color: var(--negro);
+    line-height: 1.05;
+    margin-top: 12px;
+    margin-bottom: 28px;
+}
+
+.gal-programa__descripcion {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 300;
+    color: var(--gris-texto);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    max-width: 900px;
+}
+
+.gal-programa__descripcion:last-of-type {
+    margin-bottom: 40px;
+}
+
+.gal-programa__imagen {
+    overflow: hidden;
+    height: 100%;
+    min-height: 60vh;
+}
+
+.gal-programa__imagen img,
+.gal-programa__imagen .gal-placeholder--programa {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 60vh;
+}
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media (max-width: 900px) {
+
+    .gal-label-fijo {
+        left: 24px;
+        top: 16px;
+        font-size: 15px;
+    }
+
+    /* Intro */
+    .gal-placeholder--intro { height: 60vh; }
+
+    /* Exposición: apilar */
+    .gal-expo {
+        grid-template-columns: 1fr;
+    }
+
+    .gal-expo__texto {
+        padding: 60px 32px;
+    }
+
+    .gal-expo__imagen {
+        min-height: 50vw;
+    }
+
+    /* Artista: apilar */
+    .gal-artista {
+        grid-template-columns: 1fr;
+        padding: 60px 32px;
+        gap: 40px;
+    }
+
+    .gal-artista__imagen {
+        max-width: 220px;
+    }
+
+    /* Red: 2 columnas en mobile */
+    .gal-red {
+        padding: 60px 32px;
+    }
+
+    .gal-red__cabecera {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 48px;
+    }
+
+    .gal-red__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Programa: apilar */
+    .gal-programa {
+        grid-template-columns: 1fr;
+    }
+
+    .gal-programa__texto {
+        padding: 60px 32px;
+        order: 2;
+    }
+
+    .gal-programa__imagen {
+        order: 1;
+        min-height: 50vw;
+    }
+
+    .gal-programa__imagen .gal-placeholder--programa {
+        min-height: 50vw;
+    }
+}
