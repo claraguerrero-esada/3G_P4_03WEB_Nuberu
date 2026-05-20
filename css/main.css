@@ -446,25 +446,29 @@ body.menu-abierto .menu-overlay {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    max-width: 1400px;
     margin: 0 auto;
     padding: 100px 80px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #000000;
 }
 
 .actualidad-bloque {
-    padding: 0 60px 0 0;
+    padding: 10 90px 0 0;
+}
+
+.actualidad-bloque1 {
+    padding: 10 90px 0 90px;
 }
 
 .actualidad-bloque:last-child {
     padding: 0 0 0 60px;
-    border-left: 1px solid #e0e0e0;
+    border-left: 1px solid #000000;
 }
 
 .actualidad-etiqueta {
-    font-size: 11px;
+    font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 8px;
+    margin-top: 30px;
 }
 
 .actualidad-fecha {
@@ -524,6 +528,8 @@ body.menu-abierto .menu-overlay {
     padding: 60px 80px 100px;
     max-width: 1400px;
     margin: 0 auto;
+    margin-top: -200px;
+    margin-bottom: -100px;
     isolation: isolate;
     position: relative;
     z-index: 2;
@@ -534,6 +540,7 @@ body.menu-abierto .menu-overlay {
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: visible;
+
 }
 
 .mapa-imagen {
@@ -541,6 +548,7 @@ body.menu-abierto .menu-overlay {
     height: 100%;
     object-fit: contain;
     display: block;
+
 }
 
 .mapa-placeholder {
@@ -551,7 +559,6 @@ body.menu-abierto .menu-overlay {
     justify-content: center;
     color: #aaa;
     font-size: 14px;
-    letter-spacing: 0.08em;
 }
 
 /* Puntos del mapa */

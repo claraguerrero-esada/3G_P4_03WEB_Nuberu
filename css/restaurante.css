@@ -10,25 +10,7 @@
     pointer-events: auto !important;
 }
 
-/* =============================================
-   PLACEHOLDERS (eliminar en producción)
-============================================= */
-.rest-placeholder {
-    background: #e8e8e5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    border: 1px dashed #ccc;
-    width: 100%;
-}
 
-.rest-placeholder--alto     { height: 85vh; }
-.rest-placeholder--peregrino { aspect-ratio: 3/4; max-width: 420px; }
-.rest-placeholder--eventos  { aspect-ratio: 4/3; }
-.rest-placeholder--mapa     { aspect-ratio: 16/7; }
 
 /* =============================================
    INTRO STICKY
@@ -211,7 +193,7 @@
    MENÚ DEL MES
 ============================================= */
 .rest-menu {
-    max-width: 800px;
+    border-top: 1px solid #000000;
     margin: 0 auto;
     padding: 100px 40px;
     text-align: center;
@@ -383,11 +365,10 @@
    PEREGRINAJE
 ============================================= */
 .rest-peregrinaje {
-    max-width: 800px;
     margin: 0 auto;
     padding: 80px 40px;
     text-align: center;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #000000;
 }
 
 .rest-peregrinaje__cabecera {
@@ -406,11 +387,8 @@
 ============================================= */
 .rest-peregrino {
     display: grid;
-    gap: 80px;
-    margin: 0 auto;
-    padding: 100px 80px;
-    border-top: 1px solid #e0e0e0;
-    align-items: start;
+    align-items: center;
+    text-align: center;
 }
 
 .rest-peregrino__imagen img {
@@ -419,16 +397,16 @@
 }
 
 .rest-peregrino__nombre {
-    font-size: clamp(28px, 3vw, 44px);
+    font-size: clamp(24px, 2vw, 40px);
     text-align: center;
     font-weight: 300;
     margin-bottom: 28px;
-    letter-spacing: 0.02em;
+    margin-top: 10px;
 }
 
 .rest-peregrino__texto p {
     font-size: 16px;
-    text-align: center;
+    text-align: center !important;
     font-weight: 300;
     max-width: 1000px;
     line-height: 1.75;
@@ -443,14 +421,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    max-width: 1400px;
     margin: 0 auto;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #000000;
     align-items: center;
 }
 
 .rest-eventos__imagen {
     overflow: hidden;
+    max-width: 800px;
+    padding-left: 150px;
 }
 
 .rest-eventos__imagen img {
@@ -488,9 +467,8 @@
 ============================================= */
 .rest-proveedores {
     padding: 100px 80px;
-    max-width: 1400px;
     margin: 0 auto;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #000000;
 }
 
 .rest-proveedores__cabecera {
@@ -538,6 +516,7 @@
     position: relative;
     width: 100%;
     overflow: visible;
+    margin-top: -20px;
 }
 
 .rest-mapa-imagen {

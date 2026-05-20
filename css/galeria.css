@@ -10,6 +10,11 @@
     pointer-events: auto !important;
 }
 
+.gal-expo__texto .btn-saber-mas,
+.gal-programa__texto .btn-saber-mas {
+    align-self: flex-start;
+}
+
 /* =============================================
    ETIQUETA FIJA: GALERÍA
    Mismo comportamiento que .rest-label-fijo
@@ -162,7 +167,7 @@
    Grid 1 + 3 columnas
 ============================================= */
 #gal-artista {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #000000;
 }
 
 .gal-artista {
@@ -226,7 +231,7 @@
    SECCIÓN 3.2: prox
 ============================================= */
 #gal-prox {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #000000;
 }
 
 
@@ -256,6 +261,7 @@
     font-size: clamp(32px, 3.5vw, 52px);
     font-weight: 300;
     color: var(--negro);
+    margin-top: 30px;
 }
 
 .gal-red__subtexto {
@@ -298,7 +304,7 @@
    SECCIÓN 5: PROGRAMA DE CREACIÓN
 ============================================= */
 #programa-creacion {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #000000;
 }
 
 .gal-programa {

@@ -110,7 +110,7 @@ const INGREDIENTES = {
     },
 
     'fabes': {
-        color: 'amarillo',
+        color: 'rojo',
         imagen: 'assets/images/ing-fabes.png',
         campos: {
             'Origen':      'Huerta de La Güeria, Cangas de Onís',
@@ -375,7 +375,7 @@ const INGREDIENTES = {
 
     // --- MONTE CIEGO — SETAS (verde) ---
     'setas': {
-        color: 'verde',
+        color: 'rosa',
         imagen: 'assets/images/ing-setas.png',
         campos: {
             'Origen':               'Monte Ciego, Cangas de Onís',
