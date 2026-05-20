@@ -35,6 +35,16 @@
 ============================================= */
 .rest-intro {
     position: relative;
+    /* quitar padding que podía empujar la imagen y crear sensación de recorte */
+    padding: 0;
+}
+
+#intro.rest-intro {
+    position: relative;
+    display: block; /* anular el grid de main.css que puede introducir recortes */
+    padding: 60px 16px 0 16px; /* espacio superior y padding lateral para evitar recortes */
+    margin: 0 !important;
+    overflow: visible !important;
 }
 
 .rest-label-fijo {
@@ -44,8 +54,8 @@
     font-size: 20px;
     color: var(--negro);
     font-weight: 400;
+    z-index: 20000; /* asegurar por encima del hero */
 }
-
 
 .rest-intro__label-texto {
     font-size: 40px;
@@ -55,18 +65,146 @@
     font-family: var(--fuente-cuerpo);
 }
 
+/* Simplificamos: el contenedor se define de forma definitiva al final del archivo.
+   Aquí dejamos un placeholder ligero para no duplicar reglas. */
 .rest-intro__imagen {
+    /* placeholder: el estilo definitivo está al final del archivo (full-bleed) */
+    position: relative;
     width: 100%;
-    object-fit: cover;
-
-    height: auto;
-    display: block;
+    margin: 0 auto;
+    overflow: visible;
 }
 
 .rest-intro__imagen img {
-    width: 100%;
-    height: auto;
+    /* Forzar ancho al 100% del contenedor para evitar recortes laterales
+       Mostrar la parte superior del encuadre para que no parezca cortada */
     display: block;
+    width: auto;           /* no forzamos ancho total para evitar recortes a la izquierda */
+    max-width: 95%;        /* deja margen lateral en el viewport */
+    height: auto;
+    max-height: 28vh;     /* límite razonable */
+    object-fit: contain;   /* mostrar toda la imagen sin recorte */
+    object-position: center top; /* priorizar la parte superior de la imagen */
+    margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+    /* en pantallas grandes podemos permitir algo más de altura */
+    .rest-intro__imagen img { max-height: 30vh; }
+}
+
+@media (max-width: 900px) {
+    .rest-intro__imagen img {
+        max-width: 95%;
+        max-height: 20vh;
+    }
+}
+
+/* Final overrides: asegurar comportamiento estable del hero intro */
+#intro.rest-intro {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+
+.rest-intro__imagen,
+.rest-intro__imagen img {
+    overflow: visible !important;
+}
+
+.rest-intro__imagen img {
+    width: auto !important;
+    max-width: 92% !important; /* deja margen lateral para evitar corte */
+    height: auto !important;
+    max-height: 24vh !important; /* controla tamaño vertical */
+    object-fit: contain !important; /* muestra toda la imagen sin recorte */
+    object-position: center top !important; /* prioriza la parte superior visual */
+    margin: 0 auto !important;
+}
+
+@media (max-width: 900px) {
+    .rest-intro__imagen img {
+        max-width: 95% !important;
+        max-height: 18vh !important;
+    }
+}
+
+/* =====================
+   HERO — REGLAS FINALES LIMPIAS
+   Un único bloque final que garantiza: full-bleed y imagen full-width
+   ===================== */
+#intro.rest-intro {
+    padding: 0 !important; /* nada de padding lateral que reduzca el ancho */
+    margin: 0 !important;
+    overflow: visible !important;
+}
+
+.rest-intro__imagen {
+    /* contenedor full-bleed centrado respecto al viewport */
+    position: relative !important;
+    width: 100vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+.rest-intro__imagen img {
+    /* la imagen ocupa el ancho completo del viewport dentro del contenedor */
+    display: block !important;
+    width: 100vw !important;       /* ocupa todo el ancho del viewport */
+    max-width: none !important;
+    height: auto !important;
+    /* altura mayor por defecto para que la imagen sea visible y no quede "pequeña" */
+    max-height: 56vh !important; /* escritorio grande */
+    object-fit: cover !important;    /* recorta por alto, no por ancho */
+    object-position: center top !important; /* prioriza la parte superior */
+}
+
+/* Breakpoints — reducir altura en pantallas más pequeñas */
+@media (max-width: 1400px) {
+    .rest-intro__imagen img { max-height: 48vh !important; }
+}
+@media (max-width: 1200px) {
+    .rest-intro__imagen img { max-height: 40vh !important; }
+}
+@media (max-width: 900px) {
+    .rest-intro__imagen img { max-height: 34vh !important; }
+}
+
+/* Ajuste para que la imagen del hero no se corte por abajo: permitir overflow y mostrar la imagen completa
+   usando object-fit: contain con un max-height grande (editable vía variable). */
+#intro.rest-intro {
+    overflow: visible !important;
+}
+
+.rest-intro__imagen {
+    /* permitir que la imagen sobresalga verticalmente si hace falta */
+    overflow: visible !important;
+}
+
+/* Forzar imagen full-width pero no recortada: contain + límite alto razonable */
+.rest-intro__imagen img {
+    display: block !important;
+    width: 100vw !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: var(--rest-hero-max-height, 90vh) !important; /* mayor por defecto */
+    object-fit: contain !important; /* mostrar toda la imagen, sin recortar */
+    object-position: center top !important; /* priorizar parte superior visual */
+    margin: 0 !important;
+}
+
+@media (max-width: 1200px) {
+    .rest-intro__imagen img { max-height: calc(var(--rest-hero-max-height, 90vh) * 0.8) !important; }
+}
+@media (max-width: 900px) {
+    .rest-intro__imagen img { max-height: calc(var(--rest-hero-max-height, 90vh) * 0.6) !important; }
+}
+
+:root {
+    /* altura máxima por defecto para el hero; ajusta este valor si quieres otra proporción */
+    --rest-hero-max-height: 90vh;
 }
 
 /* =============================================
@@ -268,9 +406,7 @@
 ============================================= */
 .rest-peregrino {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 80px;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 100px 80px;
     border-top: 1px solid #e0e0e0;
@@ -284,6 +420,7 @@
 
 .rest-peregrino__nombre {
     font-size: clamp(28px, 3vw, 44px);
+    text-align: center;
     font-weight: 300;
     margin-bottom: 28px;
     letter-spacing: 0.02em;
@@ -291,9 +428,10 @@
 
 .rest-peregrino__texto p {
     font-size: 16px;
+    text-align: center;
     font-weight: 300;
+    max-width: 1000px;
     line-height: 1.75;
-    color: var(--gris-texto);
     margin-bottom: 20px;
 }
 
@@ -392,7 +530,6 @@
 .rest-proveedores__subtexto {
     font-size: 15px;
     font-weight: 300;
-    color: var(--gris-texto);
     max-width: 420px;
     line-height: 1.7;
 }
@@ -428,11 +565,11 @@
 }
 
 .prov-punto--amarillo { background: #000000; }
-.prov-punto--azul     { background: #3a6fd4; }
-.prov-punto--rosa     { background: #e8567a; }
-.prov-punto--rojo     { background: #b03030; }
-.prov-punto--naranja  { background: #d47830; }
-.prov-punto--verde    { background: #3d7a5f; }
+.prov-punto--azul     { background: #000000; }
+.prov-punto--rosa     { background: #000000; }
+.prov-punto--rojo     { background: #000000; }
+.prov-punto--naranja  { background: #000000; }
+.prov-punto--verde    { background: #000000; }
 
 /* Tooltip del proveedor — rectangular, estilo wireframe */
 .prov-tooltip {
@@ -440,7 +577,7 @@
     bottom: calc(100% + 16px);
     left: 50%;
     transform: translateX(-50%) translateY(8px);
-    width: 400px;
+    width: 500px;
     background: #fff;
     border: 1.5px solid var(--negro);
     padding: 24px 28px;
@@ -459,9 +596,8 @@
 }
 
 .prov-tooltip__nombre {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-bottom: 16px;
     line-height: 1.3;
@@ -471,19 +607,19 @@
     display: grid;
     grid-template-columns: 80px 1fr;
     gap: 4px 12px;
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 300;
     margin-bottom: 14px;
     line-height: 1.5;
 }
 
 .prov-tooltip__fila strong {
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .prov-tooltip__sostenibilidad {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 10px;
+    font-weight: 300;
     margin-bottom: 8px;
 }
 
@@ -494,7 +630,7 @@
 }
 
 .prov-tooltip__lista li {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 300;
     line-height: 1.5;
     padding-left: 14px;
@@ -572,4 +708,64 @@
     .ingrediente-tooltip__inner {
         grid-template-columns: 100px 1fr;
     }
+
+    .rest-intro__imagen img {
+        max-height: 28vh; /* reducir en móvil */
+        width: auto;
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+:root {
+    /* variable para controlar la altura máxima del hero (ajústala aquí) */
+    --rest-hero-max-height: 56vh;
+}
+
+/* OVERRIDE FINAL: asegurar que la imagen del hero no se recorte por abajo
+   - fuerza overflow visible en ancestros relevantes
+   - fuerza object-fit: contain y max-height:100vh para ver la imagen completa
+*/
+#intro.rest-intro, .rest-intro__imagen { overflow: visible !important; }
+.rest-intro__imagen {
+    position: relative !important;
+    width: 100vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.rest-intro__imagen img {
+    display: block !important;
+    width: 100vw !important;          /* ocupa ancho del viewport */
+    max-width: none !important;
+    height: auto !important;
+    max-height: 100vh !important;    /* nunca más alto que la ventana -> evita recorte */
+    object-fit: contain !important;  /* muestra toda la imagen sin recortarla */
+    object-position: center center !important; /* centra verticalmente */
+    margin: 0 auto !important;
+}
+
+@media (max-width: 900px) {
+    .rest-intro__imagen img { max-height: 100vh !important; }
+}
+
+/* FIX: asegurar apariencia del botón Reservar en la barra inferior (anula overrides) */
+.barra-inferior .btn-reservar {
+    background: var(--negro) !important;
+    color: var(--blanco) !important;
+    border-radius: 100px !important;
+    padding: 10px 20px !important;
+    border: 1.5px solid var(--negro) !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-family: var(--fuente-cuerpo) !important;
+    font-size: 13px !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+}
+
+.barra-inferior .btn-reservar:hover {
+    background: var(--blanco) !important;
+    color: var(--negro) !important;
 }

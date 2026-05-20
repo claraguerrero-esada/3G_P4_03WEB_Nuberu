@@ -101,6 +101,27 @@ a {
     color: var(--blanco);
 }
 
+/* Botón de reservar (barra/fuentes): fondo negro, texto blanco, bordes redondeados */
+.btn-reservar {
+    display: inline-block;
+    background: var(--negro);
+    color: var(--blanco);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--negro);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-reservar:hover {
+    background: var(--blanco);
+    color: var(--negro);
+}
+
 /* CTAs bajo el mapa */
 .mapa-ctas {
     display: flex;

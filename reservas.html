@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservas — Nuberu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/reservas.css" />
+</head>
+<body>
+
+<!-- BARRA FIJA INFERIOR -->
+<nav class="barra-inferior" role="navigation" aria-label="Navegación principal">
+    <button class="btn-menu" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="barra-logo barra-logo--visible" aria-label="Inicio">
+        <img src="assets/images/logo.svg" alt="Nuberu" height="28" />
+    </a>
+    <a href="reservas.html" class="btn-reservar" role="button">Reservar</a>
+</nav>
+
+<!-- MENÚ OVERLAY -->
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true">
+    <div class="menu-columnas">
+        <div class="menu-columna">
+            <a href="restaurante.html" class="menu-titulo">Restaurante</a>
+            <a href="restaurante.html#menu"    class="menu-item">Menú</a>
+            <a href="restaurante.html#eventos" class="menu-item">Eventos</a>
+            <a href="restaurante.html#proveedores" class="menu-item">Productos</a>
+        </div>
+        <div class="menu-columna">
+            <a href="galeria.html" class="menu-titulo">Galería</a>
+            <a href="galeria.html#exposiciones"      class="menu-item">Exposiciones</a>
+            <a href="galeria.html#artistas"          class="menu-item">Artistas</a>
+            <a href="galeria.html#programa-creacion" class="menu-item">Creación</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================
+     PANTALLA 0: ENTRADA AL TEST
+     Visible por defecto al llegar desde el botón
+     "Reservar" de la barra inferior
+============================================= -->
+<div class="pantalla activa" id="pantalla-0">
+    <div class="entrada-decoracion">
+        <!--
+          PRODUCCIÓN: imágenes laterales decorativas
+          <img src="assets/images/deco-izquierda.png" class="entrada-deco entrada-deco--izq" alt="" />
+          <img src="assets/images/deco-derecha.png" class="entrada-deco entrada-deco--der" alt="" />
+        -->
+        <div class="entrada-deco entrada-deco--izq entrada-deco--placeholder"></div>
+        <div class="entrada-deco entrada-deco--der entrada-deco--placeholder"></div>
+    </div>
+    <div class="entrada-contenido">
+        <h1 class="entrada-titulo">El Nuberu quiere conocerte<br>antes de que llegues</h1>
+        <p class="entrada-subtitulo">Contesta estas 5 preguntas y obtén una<br>recomendación de menú</p>
+        <button class="btn-primario" id="btnEmpezarTest">Hacer test</button>
+        <button class="btn-secundario" id="btnSaltarTest">Saltar e ir a reservar</button>
+    </div>
+</div>
+
+
+<!-- ============================================
+     PANTALLAS DEL TEST (1-5)
+     Ocultas por defecto, JS las activa
+============================================= -->
+
+<!-- Barra de progreso — visible en pasos 1-5 -->
+<div class="progreso-barra" id="progresoBarra" aria-hidden="true">
+    <div class="progreso-linea">
+        <div class="progreso-paso activo" data-paso="1"><span>1</span></div>
+        <div class="progreso-paso" data-paso="2"><span>2</span></div>
+        <div class="progreso-paso" data-paso="3"><span>3</span></div>
+        <div class="progreso-paso" data-paso="4"><span>4</span></div>
+        <div class="progreso-paso" data-paso="5"><span>5</span></div>
+    </div>
+    <button class="btn-atras" id="btnAtras">Atrás</button>
+    <button class="btn-saltar-test" id="btnSaltarMini">Saltar e ir a reservar</button>
+</div>
+
+<!-- PASO 1: Sentimiento -->
+<div class="pantalla" id="pantalla-1">
+    <div class="test-contenido">
+        <h2 class="test-pregunta">¿Cómo quieres sentirte al comer?</h2>
+        <div class="test-opciones test-opciones--pills">
+            <button class="pill pill--verde"   data-valor="curioso"   data-paso="1">Curioso</button>
+            <button class="pill pill--azul"    data-valor="en-calma"  data-paso="1">En calma</button>
+            <button class="pill pill--rosa"    data-valor="festivo"   data-paso="1">Festivo</button>
+            <button class="pill pill--naranja" data-valor="creativo"  data-paso="1">Creativo</button>
+        </div>
+    </div>
+</div>
+
+<!-- PASO 2: Obra -->
+<div class="pantalla" id="pantalla-2">
+    <div class="test-contenido">
+        <h2 class="test-pregunta">Elige la obra que más te resuene</h2>
+        <div class="test-opciones test-opciones--obras">
+            <button class="obra-btn" data-valor="obra-1" data-paso="2">
+                <!--
+                  PRODUCCIÓN: <img src="assets/images/obra-test-1.jpg" alt="Obra 1" />
+                -->
+                <div class="obra-placeholder"></div>
+            </button>
+            <button class="obra-btn" data-valor="obra-2" data-paso="2">
+                <div class="obra-placeholder"></div>
+            </button>
+            <button class="obra-btn" data-valor="obra-3" data-paso="2">
+                <div class="obra-placeholder"></div>
+            </button>
+            <button class="obra-btn" data-valor="obra-4" data-paso="2">
+                <div class="obra-placeholder"></div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- PASO 3: Ingrediente -->
+<div class="pantalla" id="pantalla-3">
+    <div class="test-contenido">
+        <h2 class="test-pregunta">¿Qué ingrediente te llama hoy?</h2>
+        <div class="test-opciones test-opciones--ingredientes">
+            <button class="ingrediente-btn" data-valor="gamoneú" data-paso="3">
+                <!--PRODUCCIÓN: <img src="assets/images/ing-gamoneú.jpg" alt="Gamonéu" />-->
+                <div class="ingrediente-placeholder"></div>
+                <span>Gamonéu</span>
+            </button>
+            <button class="ingrediente-btn" data-valor="manzana" data-paso="3">
+                <div class="ingrediente-placeholder"></div>
+                <span>Manzana</span>
+            </button>
+            <button class="ingrediente-btn" data-valor="setas" data-paso="3">
+                <div class="ingrediente-placeholder"></div>
+                <span>Setas</span>
+            </button>
+            <button class="ingrediente-btn" data-valor="rosa" data-paso="3">
+                <div class="ingrediente-placeholder"></div>
+                <span>Rosa</span>
+            </button>
+            <button class="ingrediente-btn" data-valor="miel" data-paso="3">
+                <div class="ingrediente-placeholder"></div>
+                <span>Miel</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- PASO 4: Sliders -->
+<div class="pantalla" id="pantalla-4">
+    <div class="test-contenido">
+        <h2 class="test-pregunta">Selecciona tus preferencias gustativas</h2>
+        <div class="sliders-contenedor">
+
+            <div class="slider-fila">
+                <span class="slider-label">Dulce</span>
+                <input type="range" min="0" max="100" value="50"
+                       class="slider slider--rosa" id="sliderDulce"
+                       aria-label="Dulce a Salado" />
+                <span class="slider-label">Salado</span>
+            </div>
+
+            <div class="slider-fila">
+                <span class="slider-label">Suave</span>
+                <input type="range" min="0" max="100" value="50"
+                       class="slider slider--mostaza" id="sliderSuave"
+                       aria-label="Suave a Intenso" />
+                <span class="slider-label">Intenso</span>
+            </div>
+
+            <div class="slider-fila">
+                <span class="slider-label">Tradicional</span>
+                <input type="range" min="0" max="100" value="50"
+                       class="slider slider--verde" id="sliderTradicional"
+                       aria-label="Tradicional a Sorpréndeme" />
+                <span class="slider-label">Sorpréndeme</span>
+            </div>
+
+        </div>
+        <button class="btn-primario" id="btnListo">Listo</button>
+    </div>
+</div>
+
+<!-- PASO 5: Palabra -->
+<div class="pantalla" id="pantalla-5">
+    <div class="test-contenido">
+        <h2 class="test-pregunta">Elige una palabra</h2>
+        <div class="palabras-contenedor">
+            <button class="palabra pill--verde"   data-valor="artesanía" data-paso="5" style="top:15%;left:28%">Artesanía</button>
+            <button class="palabra pill--rosa"    data-valor="dulzor"    data-paso="5" style="top:8%;left:58%">Dulzor</button>
+            <button class="palabra pill--rojo"    data-valor="tierra"    data-paso="5" style="top:35%;left:47%">Tierra</button>
+            <button class="palabra pill--azul"    data-valor="nube"      data-paso="5" style="top:58%;left:33%">Nube</button>
+            <button class="palabra pill--naranja" data-valor="tropical"  data-paso="5" style="top:52%;left:60%">Tropical</button>
+        </div>
+        <button class="btn-primario btn-terminar" id="btnTerminar">Terminar el test</button>
+    </div>
+</div>
+
+
+<!-- ============================================
+     PANTALLA RESULTADO
+============================================= -->
+<div class="pantalla" id="pantalla-resultado">
+
+    <!-- Barra de progreso con todos completados -->
+    <div class="progreso-barra progreso-barra--resultado" aria-hidden="true">
+        <div class="progreso-linea">
+            <div class="progreso-paso completado" data-paso="1"><span>1</span></div>
+            <div class="progreso-paso completado" data-paso="2"><span>2</span></div>
+            <div class="progreso-paso completado" data-paso="3"><span>3</span></div>
+            <div class="progreso-paso completado" data-paso="4"><span>4</span></div>
+            <div class="progreso-paso completado" data-paso="5"><span>5</span></div>
+        </div>
+    </div>
+
+    <div class="resultado-contenido">
+        <p class="resultado-subtitulo">Eres un comensal</p>
+        <h2 class="resultado-perfil" id="resultadoPerfil">Creativo</h2>
+
+        <p class="resultado-menu-titulo">Tu menú recomendado es</p>
+
+        <div class="resultado-platos" id="resultadoPlatos">
+            <!-- Inyectado por JS -->
+        </div>
+
+        <button class="btn-primario" id="btnReservarExperiencia">Reservar experiencia</button>
+        <button class="btn-secundario" id="btnRepetirTest">Repetir el test</button>
+    </div>
+</div>
+
+
+<!-- ============================================
+     PANTALLA RESERVAS
+     Dos columnas: info izquierda + formulario derecha
+============================================= -->
+<div class="pantalla" id="pantalla-reservas">
+    <div class="reservas-contenedor">
+
+        <!-- Columna izquierda: información -->
+        <div class="reservas-info">
+            <h2 class="reservas-temporada">Temporada 2026</h2>
+
+            <div class="reservas-bloque">
+                <p class="reservas-bloque-titulo">Contacto</p>
+                <p>reservas@nuberu.com</p>
+                <p>943 880 254</p>
+                <p>De 9.00h a 17:00h de lunes a viernes.</p>
+            </div>
+
+            <div class="reservas-bloque">
+                <p class="reservas-bloque-titulo">Horario</p>
+                <p>Horario de llegada reservas:</p>
+                <p>Comida: 13:30, 14:00</p>
+                <p>Cena: 21:00, 21:30</p>
+                <br>
+                <p>Abierto para reservas:</p>
+                <p>Jueves, viernes, sábado y domingo mediodía y noche.</p>
+                <br>
+                <p>Consulta aquí las <a href="#faq" class="reservas-link">Preguntas frecuentes</a></p>
+            </div>
+
+            <div class="reservas-bloque">
+                <p class="reservas-bloque-titulo">Datos de interés</p>
+                <p>Camín de la Braña, 12 – 33550</p>
+                <p>Cangas de Onís, Asturias</p>
+                <p>943 880 254</p>
+                <p>hola@nuberu.com</p>
+                <br>
+                <p>En pleno corazón de los Picos de Europa, a 15 minutos del centro de Cangas de Onís y a 45 minutos del aeropuerto de Asturias (OVD)</p>
+            </div>
+        </div>
+
+        <!-- Columna derecha: formulario -->
+        <div class="reservas-formulario">
+
+            <!-- Menú recomendado (visible si viene del test) -->
+            <div class="reservas-menu-previo" id="reservasMenuPrevio" style="display:none;">
+                <p class="reservas-menu-previo__label">Tu menú recomendado</p>
+                <p class="reservas-menu-previo__valor" id="reservasMenuPrevioValor"></p>
+            </div>
+
+            <!-- CAMPO 1: Número de comensales -->
+            <div class="campo-grupo">
+                <label class="campo-label" for="numComensales">Número de comensales*</label>
+                <input type="number" id="numComensales" class="campo-input"
+                       min="1" max="20" value="0" placeholder="0" required />
+            </div>
+
+            <!-- CAMPO 2: Fecha — activa las horas -->
+            <div class="campo-grupo">
+                <label class="campo-label" for="fechaReserva">Fecha de reserva*</label>
+                <input type="text" id="fechaReserva" class="campo-input campo-fecha"
+                       placeholder="Selecciona una fecha" readonly required />
+                <!-- Calendario emergente -->
+                <div class="calendario" id="calendario" aria-hidden="true"></div>
+            </div>
+
+            <!-- CAMPO 3: Horario — bloqueado hasta elegir fecha -->
+            <div class="campo-grupo campo-grupo--bloqueado" id="grupoHorario">
+                <label class="campo-label">Horario*</label>
+                <div class="horario-pills" id="horarioPills">
+                    <button class="horario-pill" data-hora="13:30" disabled>13:30</button>
+                    <button class="horario-pill" data-hora="14:00" disabled>14:00</button>
+                    <button class="horario-pill horario-pill--espera" data-hora="21:00" disabled>21:00</button>
+                    <button class="horario-pill" data-hora="21:30" disabled>21:30</button>
+                </div>
+                <div class="horario-leyenda">
+                    <span><span class="leyenda-circulo leyenda-circulo--disponible"></span>Disponible</span>
+                    <span><span class="leyenda-circulo leyenda-circulo--espera"></span>Lista de espera</span>
+                </div>
+            </div>
+
+            <!-- CAMPOS DE CONTACTO — bloqueados hasta elegir hora -->
+            <div class="campo-grupo--bloqueado" id="grupoContacto">
+
+                <p class="campo-seccion-titulo">Información de contacto</p>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="nombre">Nombre*</label>
+                    <input type="text" id="nombre" class="campo-input" placeholder="Nombre" disabled required />
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="apellidos">Apellidos*</label>
+                    <input type="text" id="apellidos" class="campo-input" placeholder="Apellidos" disabled required />
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="telefono">Teléfono*</label>
+                    <input type="tel" id="telefono" class="campo-input" placeholder="Teléfono" disabled required />
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="email">E-mail*</label>
+                    <input type="email" id="email" class="campo-input" placeholder="E-mail" disabled required />
+                </div>
+
+                <p class="campo-seccion-titulo">Información adicional</p>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="alergias">Alergias o intolerancias</label>
+                    <input type="text" id="alergias" class="campo-input"
+                           placeholder="ALERGIAS O INTOLERANCIAS" disabled />
+                </div>
+
+                <!-- Política de cancelación -->
+                <div class="reservas-politica">
+                    <p>Política de cancelación de reservas: En caso de no poder asistir, se podrá modificar la fecha o transferir la reserva.</p>
+                    <p>En caso de no poder asistir, puedes anular tu reserva respondiendo el email de confirmación o llamando por teléfono al 943 880 254</p>
+                </div>
+
+                <!-- Checkboxes legales -->
+                <div class="campo-check">
+                    <input type="checkbox" id="checkLegal" required />
+                    <label for="checkLegal">He leído y acepto las Condiciones de uso y la Política de Privacidad</label>
+                </div>
+
+                <div class="campo-check">
+                    <input type="checkbox" id="checkMarketing" />
+                    <label for="checkMarketing">Autorizo a Nuberu para que utilice la información de este formulario para mantenerme al día de las novedades.</label>
+                </div>
+
+                <button class="btn-primario btn-confirmar" id="btnConfirmar">Confirmar reserva</button>
+
+            </div><!-- /grupoContacto -->
+
+        </div><!-- /reservas-formulario -->
+    </div><!-- /reservas-contenedor -->
+</div><!-- /pantalla-reservas -->
+
+
+<!-- ============================================
+     PANTALLA CONFIRMACIÓN
+============================================= -->
+<div class="pantalla" id="pantalla-confirmacion">
+    <div class="confirmacion-contenido">
+        <h2 class="confirmacion-titulo">¡Reserva confirmada!</h2>
+        <p class="confirmacion-subtitulo">Te hemos enviado un email de confirmación a <strong id="confirmacionEmail"></strong></p>
+        <p class="confirmacion-detalle" id="confirmacionDetalle"></p>
+        <a href="index.html" class="btn-primario">Volver al inicio</a>
+    </div>
+</div>
+
+
+<script src="js/main.js"></script>
+<script src="js/reservas.js"></script>
+</body>
+</html>

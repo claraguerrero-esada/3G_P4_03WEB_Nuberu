@@ -22,8 +22,8 @@
     color: var(--negro);
     font-weight: 400;
     z-index: 500;
-    pointer-events: none;
-}
+    pointer-events: auto;
+    cursor: pointer;}
 
 /* =============================================
    PLACEHOLDERS (eliminar en producción)
@@ -129,7 +129,7 @@
     color: var(--negro);
     line-height: 1.5;
     margin-bottom: 40px;
-    max-width: 600px;
+    max-width: 1000px;
 }
 
 .gal-expo__nota {
@@ -150,10 +150,11 @@
 
 .gal-expo__imagen img,
 .gal-expo__imagen .gal-placeholder--expo {
-    width: 100%;
+    width: 80%;
     height: 100%;
     object-fit: cover;
     display: block;
+    margin-left: 60px;
 }
 
 /* =============================================
@@ -233,13 +234,13 @@
    SECCIÓN 4: RED DE ARTISTAS
 ============================================= */
 #artistas {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #000000;
+    margin-bottom: 70px;
+    margin-top: 70px;
 }
 
 .gal-red {
-    max-width: 1400px;
     margin: 0 auto;
-    padding: 100px 80px;
 }
 
 .gal-red__cabecera {
@@ -270,7 +271,6 @@
 .gal-red__grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 24px;
 }
 
 .gal-artista-card {
@@ -280,16 +280,18 @@
 }
 
 .gal-artista-card__nombre {
+    padding-left: 10px;
     font-size: 14px;
     font-weight: 400;
     color: var(--negro);
+    margin-bottom: -5px;
 }
 
 .gal-artista-card__disciplina {
+    padding-left: 10px;
     font-size: 12px;
     font-weight: 300;
-    color: var(--gris-texto);
-    text-transform: uppercase;
+    font-style: italic;
 }
 
 /* =============================================

@@ -19,11 +19,12 @@
     <button class="btn-menu" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
     </button>
-    <a href="index.html" class="barra-logo barra-logo--visible" aria-label="Inicio">
-        <a href="index.html" class="barra-logo barra-logo--visible" aria-label="Volver al inicio">
-            <img src="assets/images/logo.svg" alt="Nuberu" height="28" />
-        </a>
+
+    <!-- Logo centrado: un único enlace, sin anidaciones -->
+    <a href="index.html" class="barra-logo barra-logo--visible" aria-label="Volver al inicio">
+        <img src="assets/images/logo.svg" alt="Nuberu" height="28" />
     </a>
+
     <a href="reservas.html" class="btn-reservar" role="button">Reservar</a>
 </nav>
 
@@ -35,7 +36,7 @@
             <a href="restaurante.html" class="menu-titulo">Restaurante</a>
             <a href="restaurante.html#menu"    class="menu-item">Menú</a>
             <a href="restaurante.html#eventos" class="menu-item">Eventos</a>
-            <a href="reservas.html#proveedores"            class="menu-item">Productos</a>
+            <a href="restaurante.html#proveedores" class="menu-item">Productos</a>
         </div>
 
         <div class="menu-columna">
@@ -242,7 +243,6 @@
 <section class="rest-peregrinaje" id="peregrinaje">
 
     <div class="rest-peregrinaje__cabecera">
-        <img src="assets/images/nino.png" class="rest-peregrino__imagen">
         <h2 class="rest-menu__titulo">Peregrinaje</h2>
         <p class="rest-menu__subtitulo">Cocina georgiana contemporánea elaborada<br>con producto asturiano de temporada.</p>
         <p class="rest-peregrinaje__semana">Semana del 15 al 21 de junio</p>
@@ -281,13 +281,7 @@
 <section class="rest-peregrino" id="peregrino">
 
     <div class="rest-peregrino__imagen">
-        <!--
-          PRODUCCIÓN:
-          <img src="assets/images/nino-kapanadze.jpg" alt="Nino Kapanadze" />
-        -->
-        <div class="rest-placeholder rest-placeholder--peregrino">
-            [ assets/images/nino-kapanadze.jpg ]
-        </div>
+        <img src="assets/images/nino.png" class="rest-peregrino__imagen">
     </div>
 
     <div class="rest-peregrino__texto">
@@ -364,7 +358,7 @@
         </div>
 
         <!-- PROVEEDOR 1: Huerta La Güeria (amarillo) — Cangas de Onís, centro-este -->
-        <div class="prov-punto prov-punto--amarillo" style="top:52%;left:62%"
+        <div class="prov-punto prov-punto--amarillo" style="top:56%;left:69%"
              role="button" tabindex="0" aria-label="Huerta La Güeria">
             <div class="prov-tooltip prov-tooltip--amarillo">
                 <h3 class="prov-tooltip__nombre">Huerta La Güeria</h3>
@@ -383,7 +377,7 @@
         </div>
 
         <!-- PROVEEDOR 2: Braña Viva — Quesería artesanal (azul) — Picos de Europa -->
-        <div class="prov-punto prov-punto--azul" style="top:30%;left:68%"
+        <div class="prov-punto prov-punto--azul" style="top:46%;left:68%"
              role="button" tabindex="0" aria-label="Braña Viva">
             <div class="prov-tooltip prov-tooltip--azul">
                 <h3 class="prov-tooltip__nombre">Braña Viva — Quesería artesanal</h3>
@@ -402,7 +396,7 @@
         </div>
 
         <!-- PROVEEDOR 3: Mar Cantábrica — Pescado de bajura (rosa) — Costa norte -->
-        <div class="prov-punto prov-punto--rosa" style="top:18%;left:50%"
+        <div class="prov-punto prov-punto--rosa" style="top:40%;left:77%"
              role="button" tabindex="0" aria-label="Mar Cantábrica">
             <div class="prov-tooltip prov-tooltip--rosa">
                 <h3 class="prov-tooltip__nombre">Mar Cantábrica — Pescado de bajura</h3>
@@ -422,7 +416,7 @@
         </div>
 
         <!-- PROVEEDOR 4: Roxa de los Valles — Ganadería regenerativa (rojo oscuro) — occidente -->
-        <div class="prov-punto prov-punto--rojo" style="top:55%;left:20%"
+        <div class="prov-punto prov-punto--rojo" style="top:55%;left:27%"
              role="button" tabindex="0" aria-label="Roxa de los Valles">
             <div class="prov-tooltip prov-tooltip--rojo">
                 <h3 class="prov-tooltip__nombre">Roxa de los Valles — Ganadería regenerativa</h3>
@@ -441,7 +435,7 @@
         </div>
 
         <!-- PROVEEDOR 5: Pumarada Tíu Lluis — Sidra (naranja) — centro -->
-        <div class="prov-punto prov-punto--naranja" style="top:40%;left:44%"
+        <div class="prov-punto prov-punto--naranja" style="top:36%;left:64%"
              role="button" tabindex="0" aria-label="Pumarada Tíu Lluis">
             <div class="prov-tooltip prov-tooltip--naranja">
                 <h3 class="prov-tooltip__nombre">Pumarada Tíu Lluis — Sidra natural y derivados</h3>
@@ -460,7 +454,7 @@
         </div>
 
         <!-- PROVEEDOR 6: Monte Ciego — Setas y hongos silvestres (verde) — oriente -->
-        <div class="prov-punto prov-punto--verde" style="top:62%;left:78%"
+        <div class="prov-punto prov-punto--verde" style="top:58%;left:72%"
              role="button" tabindex="0" aria-label="Monte Ciego">
             <div class="prov-tooltip prov-tooltip--verde">
                 <h3 class="prov-tooltip__nombre">Monte Ciego — Setas y hongos silvestres</h3>

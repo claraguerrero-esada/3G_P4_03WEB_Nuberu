@@ -1,0 +1,908 @@
+/* =============================================
+   NUBERU — reservas.css
+   Estilos del test del Nuberu y formulario de reservas
+   ============================================= */
+
+/* Logo siempre visible en esta página */
+.barra-logo--visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* =============================================
+   SISTEMA DE PANTALLAS
+   Solo la pantalla .activa es visible.
+   JS añade/quita la clase .activa.
+============================================= */
+.pantalla {
+    display: none;
+    min-height: 100vh;
+}
+
+.pantalla.activa {
+    display: flex;
+    flex-direction: column;
+}
+
+/* =============================================
+   PANTALLA 0: ENTRADA
+============================================= */
+.entrada-decoracion {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.entrada-deco {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18vw;
+    max-width: 260px;
+}
+
+.entrada-deco--izq { left: -4vw; }
+.entrada-deco--der { right: -4vw; }
+
+.entrada-deco--placeholder {
+    aspect-ratio: 1;
+    background: radial-gradient(circle, #e8c840 0%, #d47820 60%, transparent 100%);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.entrada-contenido {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px 120px;
+    gap: 24px;
+}
+
+.entrada-titulo {
+    font-size: clamp(24px, 3.5vw, 48px);
+    font-weight: 300;
+    line-height: 1.25;
+    max-width: 700px;
+}
+
+.entrada-subtitulo {
+    font-size: clamp(15px, 1.8vw, 20px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gris-texto);
+    line-height: 1.5;
+}
+
+/* =============================================
+   BOTONES GLOBALES
+============================================= */
+.btn-primario {
+    background: var(--negro);
+    color: var(--blanco);
+    border: none;
+    border-radius: 100px;
+    padding: 14px 40px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primario:hover {
+    background: #333;
+    transform: scale(1.03);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--negro);
+    border: 1.5px solid var(--negro);
+    border-radius: 100px;
+    padding: 13px 40px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-secundario:hover {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+/* =============================================
+   BARRA DE PROGRESO
+============================================= */
+.progreso-barra {
+    display: none; /* JS la muestra cuando empieza el test */
+    position: relative;
+    padding: 32px 60px 0;
+    margin-bottom: 20px;
+}
+
+.progreso-barra.visible {
+    display: block;
+}
+
+.progreso-linea {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Línea horizontal de fondo */
+.progreso-linea::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #d0d0d0;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.progreso-paso {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid #d0d0d0;
+    background: var(--blanco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 300;
+    color: #aaa;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    /* Distribuir uniformemente */
+    margin: 0 auto;
+}
+
+.progreso-linea {
+    justify-content: space-between;
+}
+
+.progreso-paso.activo {
+    background: var(--negro);
+    border-color: var(--negro);
+    color: var(--blanco);
+    font-weight: 600;
+}
+
+.progreso-paso.completado {
+    background: var(--negro);
+    border-color: var(--negro);
+    color: var(--blanco);
+}
+
+.btn-atras {
+    background: none;
+    border: none;
+    font-family: var(--fuente-cuerpo);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--negro);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: 16px;
+    padding: 0;
+}
+
+.btn-saltar-test {
+    position: absolute;
+    right: 60px;
+    bottom: 0;
+    background: transparent;
+    border: 1.5px solid var(--negro);
+    border-radius: 100px;
+    padding: 10px 24px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-saltar-test:hover {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+/* =============================================
+   CONTENIDO DE CADA PASO DEL TEST
+============================================= */
+.test-contenido {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 60px 120px;
+    gap: 48px;
+}
+
+.test-pregunta {
+    font-size: clamp(22px, 3vw, 40px);
+    font-weight: 300;
+    text-align: center;
+    line-height: 1.3;
+
+}
+
+/* =============================================
+   PASO 1: PILLS DE SENTIMIENTO
+============================================= */
+.test-opciones--pills {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pill {
+    border-radius: 100px;
+    padding: 14px 32px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.pill--verde   { border: 1.5px solid #3d7a5f; color: #3d7a5f; }
+.pill--azul    { border: 1.5px solid #2b4fd4; color: #2b4fd4; }
+.pill--rosa    { border: 1.5px solid #e8567a; color: #e8567a; }
+.pill--naranja { border: 1.5px solid #d47830; color: #d47830; }
+.pill--rojo    { border: 1.5px solid #b03030; color: #b03030; }
+
+.pill:hover, .pill.seleccionado {
+    transform: scale(1.04);
+}
+
+.pill--verde.seleccionado   { background: #3d7a5f;  color: #fff; }
+.pill--azul.seleccionado    { background: #2b4fd4;  color: #fff; }
+.pill--rosa.seleccionado    { background: #e8567a;  color: #fff; }
+.pill--naranja.seleccionado { background: #d47830;  color: #fff; }
+.pill--rojo.seleccionado    { background: #b03030;  color: #fff; }
+
+/* =============================================
+   PASO 2: OBRAS
+============================================= */
+.test-opciones--obras {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.obra-btn {
+    border: 2px solid transparent;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    aspect-ratio: 1;
+}
+
+.obra-btn:hover { transform: scale(1.03); }
+.obra-btn.seleccionado { border-color: var(--negro); }
+
+.obra-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.obra-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #b0b0ac;
+    /* PRODUCCIÓN: eliminar este placeholder */
+}
+
+/* =============================================
+   PASO 3: INGREDIENTES
+============================================= */
+.test-opciones--ingredientes {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ingrediente-btn {
+    background: none;
+    border: 2px solid transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 160px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+/* Layout asimétrico 3+2 */
+.test-opciones--ingredientes .ingrediente-btn:nth-child(4),
+.test-opciones--ingredientes .ingrediente-btn:nth-child(5) {
+    margin-top: 0;
+}
+
+.ingrediente-btn:hover { transform: scale(1.04); }
+.ingrediente-btn.seleccionado { border-color: var(--negro); }
+
+.ingrediente-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #b0b0ac;
+}
+
+.ingrediente-btn img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+}
+
+.ingrediente-btn span {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--negro);
+    letter-spacing: 0.02em;
+}
+
+/* =============================================
+   PASO 4: SLIDERS
+============================================= */
+.sliders-contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    max-width: 680px;
+    margin-bottom: -15px;
+}
+
+.slider-fila {
+    display: grid;
+    grid-template-columns: 110px 1fr 110px;
+    align-items: center;
+    gap: 20px;
+}
+
+.slider-label {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--negro);
+}
+
+.slider-label:last-child { text-align: right; }
+
+/* Reset del slider nativo */
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: #d0d0d0;
+    outline: none;
+    border-radius: 2px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider--rosa::-webkit-slider-thumb    { background: #e8567a; }
+.slider--mostaza::-webkit-slider-thumb { background: #d4a843; }
+.slider--verde::-webkit-slider-thumb   { background: #3d7a5f; }
+
+.slider--rosa::-moz-range-thumb    { background: #e8567a; width:18px; height:18px; border-radius:50%; border:none; }
+.slider--mostaza::-moz-range-thumb { background: #d4a843; width:18px; height:18px; border-radius:50%; border:none; }
+.slider--verde::-moz-range-thumb   { background: #3d7a5f; width:18px; height:18px; border-radius:50%; border:none; }
+
+/* =============================================
+   PASO 5: PALABRAS FLOTANTES
+============================================= */
+.palabras-contenedor {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 340px;
+}
+
+.palabra {
+    position: absolute;
+    background: transparent;
+    border-radius: 100px;
+    padding: 12px 28px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+
+.palabra:hover { transform: scale(1.06); }
+
+.btn-terminar {
+    margin-top: 20px;
+}
+
+/* =============================================
+   PANTALLA RESULTADO
+============================================= */
+.resultado-contenido {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 60px 120px;
+    gap: 24px;
+}
+
+.resultado-subtitulo {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--gris-texto);
+    letter-spacing: 0.04em;
+}
+
+.resultado-perfil {
+    font-size: clamp(40px, 7vw, 96px);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.resultado-menu-titulo {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-top: 16px;
+}
+
+.resultado-platos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.resultado-plato {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.resultado-plato img,
+.resultado-plato .plato-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+}
+
+.resultado-plato .plato-placeholder {
+    background: #d0d0cc;
+}
+
+.resultado-plato-nombre {
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+    color: var(--negro);
+}
+
+.progreso-barra--resultado {
+    display: block !important;
+}
+
+/* =============================================
+   FORMULARIO DE RESERVAS
+============================================= */
+.reservas-contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    min-height: calc(100vh - 72px);
+    padding-bottom: 72px;
+}
+
+.reservas-info {
+    padding: 60px 60px 60px 80px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.reservas-temporada {
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.reservas-bloque {
+    margin-bottom: 32px;
+}
+
+.reservas-bloque p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--negro);
+}
+
+.reservas-bloque-titulo {
+    font-weight: 600 !important;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.reservas-link {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.reservas-formulario {
+    padding: 60px 80px 60px 60px;
+}
+
+/* Menú previo del test */
+.reservas-menu-previo {
+    background: #f5f5f3;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    border-left: 3px solid var(--negro);
+}
+
+.reservas-menu-previo__label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gris-texto);
+    margin-bottom: 4px;
+}
+
+.reservas-menu-previo__valor {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/* Campos del formulario */
+.campo-grupo {
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.campo-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gris-texto);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+}
+
+.campo-seccion-titulo {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    margin-top: 8px;
+}
+
+.campo-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #d0d0d0;
+    padding: 8px 0;
+    font-family: var(--fuente-cuerpo);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--negro);
+    background: transparent;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.campo-input:focus { border-bottom-color: var(--negro); }
+
+.campo-input::placeholder { color: #bbb; }
+
+.campo-input:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Campo fecha — cursor pointer */
+.campo-fecha { cursor: pointer; }
+
+/* ---- CALENDARIO EMERGENTE ---- */
+.calendario {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 320px;
+    background: var(--blanco);
+    border: 1px solid #d0d0d0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    z-index: 300;
+    display: none;
+    padding: 20px;
+    font-family: var(--fuente-cuerpo);
+}
+
+.calendario.abierto { display: block; }
+
+.cal-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.cal-mes {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+}
+
+.cal-nav {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--negro);
+    padding: 4px 8px;
+    transition: opacity 0.2s;
+}
+
+.cal-nav:hover { opacity: 0.5; }
+
+.cal-dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--gris-texto);
+    margin-bottom: 8px;
+}
+
+.cal-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.cal-dia {
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 13px;
+    font-weight: 300;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+
+.cal-dia:hover { background: #f0f0ee; }
+.cal-dia.seleccionado { background: var(--negro); color: var(--blanco); }
+.cal-dia.hoy { font-weight: 600; }
+.cal-dia.deshabilitado { opacity: 0.25; cursor: not-allowed; pointer-events: none; }
+.cal-dia.vacio { cursor: default; }
+
+/* ---- HORARIOS ---- */
+.campo-grupo--bloqueado {
+    opacity: 0.35;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.campo-grupo--bloqueado.desbloqueado {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.horario-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.horario-pill {
+    border: 1.5px solid var(--negro);
+    border-radius: 100px;
+    padding: 10px 22px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 14px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.horario-pill:hover:not(:disabled) {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.horario-pill.seleccionado {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.horario-pill--espera {
+    border-style: dashed;
+}
+
+.horario-pill:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.horario-leyenda {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--gris-texto);
+    align-items: center;
+}
+
+.leyenda-circulo {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.leyenda-circulo--disponible { border: 1.5px solid var(--negro); }
+.leyenda-circulo--espera     { border: 1.5px dashed var(--gris-texto); }
+
+/* Checkboxes */
+.campo-check {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.campo-check input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--negro);
+}
+
+.campo-check label {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.reservas-politica {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gris-texto);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.reservas-politica p { margin-bottom: 8px; }
+
+.btn-confirmar { margin-top: 24px; }
+
+/* =============================================
+   PANTALLA CONFIRMACIÓN
+============================================= */
+.confirmacion-contenido {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px 120px;
+    gap: 20px;
+}
+
+.confirmacion-titulo {
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 300;
+}
+
+.confirmacion-subtitulo {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gris-texto);
+}
+
+.confirmacion-detalle {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gris-texto);
+    font-style: italic;
+}
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media (max-width: 900px) {
+    .test-opciones--obras {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .resultado-platos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reservas-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .reservas-info {
+        padding: 48px 32px;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .reservas-formulario {
+        padding: 48px 32px;
+    }
+
+    .slider-fila {
+        grid-template-columns: 80px 1fr 80px;
+    }
+
+    .progreso-barra {
+        padding: 24px 32px 0;
+    }
+
+    .btn-saltar-test {
+        right: 32px;
+    }
+
+    .palabras-contenedor {
+        height: 280px;
+    }
+}
