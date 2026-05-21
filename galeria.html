@@ -70,15 +70,11 @@
 ============================================= -->
 <section id="gal-intro" aria-label="Introducción Galería">
     <div class="gal-intro__imagen">
-        <!--
-          PRODUCCIÓN: reemplazar por:
+
           <img src="assets/images/galeria-intro.png"
                alt="Galería Nuberu — espacio de creación y exposición"
                class="gal-intro__img" />
-        -->
-        <div class="gal-placeholder gal-placeholder--intro">
-            <span>IMAGEN INTRO<br>(texto + imagen integrados)</span>
-        </div>
+
     </div>
 </section>
 
@@ -163,7 +159,10 @@
      SECCIÓN 3.2: Proxima exposición
 ============================================= -->
 <section id="gal-prox" aria-label="Próxima exposición">
-    <div class="gal-expo__texto"> <h1 class="gal-expo__titulo">NACARÉS</h1> </div>
+    <div class="gal-expo__texto">
+        <p class="gal-expo__etiqueta">Próximamente</p>
+        <h1 class="gal-expo__titulo">NACARÉS</h1>
+    </div>
     <div class="gal-intro__imagen">
           <img src="assets/images/nacares.png"
                alt="Galería Nuberu — espacio de creación y exposición"
@@ -252,28 +251,22 @@
                 La obra resultante se expone en la galería durante la temporada siguiente
                 y el proceso queda documentado en una publicación de tirada limitada.
             </p>
-            <a href="mailto:talento@nuberu.es"
-               class="btn-saber-mas"
-               aria-label="Enviar mensaje a talento@nuberu.es">
-                Enviar mensaje
-            </a>
         </div>
 
         <div class="gal-programa__imagen">
-            <!--
-              PRODUCCIÓN: reemplazar por:
-              <img src="assets/images/programa-creacion.png"
-                   alt="Programa de residencias Nuberu" />
-            -->
-            <div class="gal-placeholder gal-placeholder--programa">
-                <span>IMAGEN<br>PROGRAMA</span>
-            </div>
+            <img src="assets/images/programa-creacion.png"
+                 alt="Programa de residencias Nuberu" />
         </div>
 
-    </div>
-
-</section>
-
+        <div class="gal-programa__participar">
+            <p class="gal-programa__como">¿Cómo participar?</p>
+            <p class="gal-programa__instruccion">
+                Escribe un correo a talento@nuberu.es<br>
+                adjuntando tu nombre, portfolio y una breve carta de motivación
+            </p>
+            <a href="mailto:talento@nuberu.es"
+               class="btn-saber-mas" role="button"> Enviar mensaje </a>
+        </div>
 
 <script src="js/main.js"></script>
 <script src="js/galeria.js"></script>

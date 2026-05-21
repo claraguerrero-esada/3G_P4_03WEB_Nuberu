@@ -386,30 +386,44 @@
    PEREGRINO DEL MES
 ============================================= */
 .rest-peregrino {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
+    padding: 0 0 100px;
+    border-top: 1px solid #e0e0e0;
+    overflow: visible;
+}
+
+.rest-peregrino__imagen {
+    width: 100%;
 }
 
 .rest-peregrino__imagen img {
     width: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
 }
 
 .rest-peregrino__nombre {
-    font-size: clamp(24px, 2vw, 40px);
-    text-align: center;
+    font-size: clamp(28px, 3vw, 44px);
     font-weight: 300;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin-top: 48px;
     margin-bottom: 28px;
-    margin-top: 10px;
+}
+
+.rest-peregrino__texto {
+    text-align: center;
+    max-width: 900px;
+    padding: 0 40px;
 }
 
 .rest-peregrino__texto p {
     font-size: 16px;
-    text-align: center !important;
     font-weight: 300;
-    max-width: 1000px;
     line-height: 1.75;
+    color: var(--gris-texto);
     margin-bottom: 20px;
 }
 

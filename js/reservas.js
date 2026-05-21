@@ -102,10 +102,12 @@ function actualizarProgreso(paso) {
 document.getElementById('btnEmpezarTest').addEventListener('click', () => {
     estado.paso = 1;
     actualizarProgreso(1);
+    document.body.classList.add('test-activo');
     mostrarPantalla('pantalla-1');
 });
 
 document.getElementById('btnSaltarTest').addEventListener('click', () => {
+    document.body.classList.remove('test-activo');
     mostrarPantalla('pantalla-reservas');
 });
 
@@ -118,14 +120,16 @@ document.getElementById('btnAtras').addEventListener('click', () => {
         actualizarProgreso(estado.paso);
         mostrarPantalla(`pantalla-${estado.paso}`);
     } else {
+        document.body.classList.remove('test-activo');
         mostrarPantalla('pantalla-0');
         progresoBarra.classList.remove('visible');
     }
 });
 
-// Botón saltar mini (en barra de progreso)
-document.getElementById('btnSaltarMini').addEventListener('click', () => {
+// Botón saltar de la barra inferior — lleva a pantalla de reservas
+document.getElementById('btnSaltarBarra').addEventListener('click', () => {
     progresoBarra.classList.remove('visible');
+    document.body.classList.remove('test-activo');
     mostrarPantalla('pantalla-reservas');
 });
 
@@ -144,6 +148,8 @@ document.querySelectorAll('[data-paso="1"]').forEach(btn => {
             actualizarProgreso(2);
             mostrarPantalla('pantalla-2');
         }, 400);
+        document.body.classList.add('test-activo');
+
     });
 });
 

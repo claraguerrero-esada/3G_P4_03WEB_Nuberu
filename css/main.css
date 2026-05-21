@@ -61,6 +61,22 @@ a {
     -webkit-backdrop-filter: blur(2px);
 }
 
+.barra-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.barra-logo.visible,
+.barra-logo--visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
 .btn-menu {
     background: none;
     border: none;
@@ -120,6 +136,35 @@ a {
 .btn-reservar:hover {
     background: var(--blanco);
     color: var(--negro);
+}
+
+/* Botón "Saltar y reservar" en la barra durante el test */
+.btn-saltar-barra {
+    display: none;
+    background: transparent;
+    color: var(--negro);
+    border: 1.5px solid var(--negro);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn-saltar-barra:hover {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+/* Durante el test, ocultar "Reservar" y mostrar "Saltar y reservar" */
+body.test-activo .btn-reservar {
+    display: none;
+}
+
+body.test-activo .btn-saltar-barra {
+    display: inline-block;
 }
 
 /* CTAs bajo el mapa */
@@ -452,11 +497,11 @@ body.menu-abierto .menu-overlay {
 }
 
 .actualidad-bloque {
-    padding: 10 90px 0 0;
+    padding: 10px 90px 0 0;
 }
 
 .actualidad-bloque1 {
-    padding: 10 90px 0 90px;
+    padding: 10px 90px 0 90px;
 }
 
 .actualidad-bloque:last-child {

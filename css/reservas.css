@@ -227,7 +227,19 @@
     background: var(--negro);
     color: var(--blanco);
 }
+/* Botón saltar — visible solo durante el test */
+#btnSaltarBarra {
+    display: none;
+}
 
+body.test-activo #btnSaltarBarra {
+    display: inline-block;
+}
+
+/* En pantalla de reservas ocultarlo */
+#pantalla-reservas.activa ~ nav #btnSaltarBarra {
+    display: none;
+}
 /* =============================================
    CONTENIDO DE CADA PASO DEL TEST
 ============================================= */
