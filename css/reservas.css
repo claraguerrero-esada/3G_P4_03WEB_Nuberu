@@ -249,7 +249,7 @@ body.test-activo #btnSaltarBarra {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 60px 120px;
+    padding: 20px 60px 120px;
     gap: 48px;
 }
 
@@ -450,7 +450,7 @@ body.test-activo #btnSaltarBarra {
     position: relative;
     width: 100%;
     max-width: 800px;
-    height: 340px;
+    height: 340px; /* restaurado al valor original */
 }
 
 .palabra {
@@ -469,7 +469,31 @@ body.test-activo #btnSaltarBarra {
 .palabra:hover { transform: scale(1.06); }
 
 .btn-terminar {
-    margin-top: 20px;
+    margin-top: 0;
+    transform: none;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.18s ease;
+}
+
+/* Revertir cambios específicos de la pantalla 5: ya no posicionamos el botón absolutamente.
+   En su lugar, movemos TODO el contenido de la pantalla 5 hacia arriba para que ocupe el mismo
+   espacio que antes pero desplazado visualmente (incluye el botón). */
+#pantalla-5 .test-contenido {
+    transform: translateY(-40px); /* subir TODO el contenido de la pantalla 5 */
+ }
+
+/* Subir más solo el botón 'Terminar' dentro de la pantalla 5 */
+#pantalla-5 .btn-terminar {
+    position: relative; /* asegurar que top funcione */
+    top: -80px; /* subir 80px adicional respecto a su posición natural */
+    z-index: 10;
+}
+
+@media (max-width: 900px) {
+    #pantalla-5 .btn-terminar {
+        top: -40px; /* menos desplazamiento en móvil, aumentado */
+    }
 }
 
 /* =============================================
@@ -915,6 +939,13 @@ body.test-activo #btnSaltarBarra {
     }
 
     .palabras-contenedor {
-        height: 280px;
+        height: 280px; /* restaurado a valor original en responsive */
     }
-}
+
+    /* Ajuste del botón terminar en pantallas pequeñas */
+    .btn-terminar {
+        margin-top: 0;
+        transform: none; /* sin transform adicional: la pantalla 5 mueve todo */
+        z-index: 2;
+    }
+ }

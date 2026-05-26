@@ -816,3 +816,201 @@ body.menu-abierto .menu-overlay {
         padding: 14px 0;
     }
 }
+
+/* =============================================
+   BANNER DE COOKIES
+============================================= */
+.cookie-banner {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    max-width: 380px;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    padding: 24px;
+    z-index: 999;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: slideInRight 0.4s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(400px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.cookie-banner.oculto {
+    animation: slideOutRight 0.3s ease-out forwards;
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(400px);
+    }
+}
+
+.cookie-contenido {
+    width: 100%;
+}
+
+.cookie-texto {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.cookie-botones {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-aceptar,
+.btn-rechazar {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-aceptar {
+    background-color: var(--acento-rosa);
+    color: #fff;
+}
+
+.btn-aceptar:hover {
+    background-color: #d74368;
+    transform: scale(1.05);
+}
+
+.btn-rechazar {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-rechazar:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+/* Responsive: en móvil, ajustar posición */
+@media (max-width: 600px) {
+    .cookie-banner {
+        top: 12px;
+        right: 12px;
+        left: 12px;
+        max-width: none;
+    }
+}
+
+/* Footer pequeño dentro del menú overlay */
+.menu-overlay .menu-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10001;
+}
+
+.menu-overlay .menu-footer a {
+    color: var(--gris-texto);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+
+/* Modal (ventana emergente) */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+    z-index: 10002;
+}
+
+.modal-backdrop.activo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(760px, calc(100% - 48px));
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+    background: var(--blanco);
+    border: 1px solid var(--negro); /* borde negro */
+    border-radius: 0; /* sin redondeado */
+    padding: 28px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 10003;
+}
+
+.modal.activo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal .modal-titulo {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.modal .modal-cuerpo {
+    font-size: 14px;
+    color: var(--gris-texto);
+    line-height: 1.6;
+}
+
+.modal .modal-cierre {
+    display: inline-block;
+    margin-top: 18px;
+    background: transparent;
+    border: 1px solid var(--negro);
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: var(--fuente-cuerpo);
+}
+
+/* Asegurar accesibilidad: foco visible */
+.menu-overlay .menu-footer a:focus,
+.modal .modal-cierre:focus {
+    outline: 2px dashed rgba(0,0,0,0.12);
+    outline-offset: 4px;
+}

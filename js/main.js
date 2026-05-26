@@ -290,3 +290,148 @@ function posicionarTooltip(punto, tooltip) {
     tooltip.style.zIndex = '9999';
     // No forzamos pointer-events aquí: lo controla la clase .activo en CSS
 }
+
+// --------------------------------------------------
+// 6. BANNER DE COOKIES
+// --------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const cookieBanner = document.getElementById('cookieBanner');
+    const btnAceptar = document.getElementById('btnAceptar');
+    const btnRechazar = document.getElementById('btnRechazar');
+
+    // Verificar si ya ha aceptado cookies
+    if (localStorage.getItem('cookiesAceptadas')) {
+        cookieBanner.style.display = 'none';
+    }
+
+    // Función para ocultar el banner con animación
+    function ocultarBanner(valor) {
+        cookieBanner.classList.add('oculto');
+
+        // Esperar a que termine la animación antes de ocultar completamente
+        setTimeout(function() {
+            cookieBanner.style.display = 'none';
+            localStorage.setItem('cookiesAceptadas', valor);
+        }, 300);
+    }
+
+    // Aceptar cookies
+    btnAceptar.addEventListener('click', function() {
+        ocultarBanner('true');
+    });
+
+    // Rechazar cookies
+    btnRechazar.addEventListener('click', function() {
+        ocultarBanner('false');
+    });
+});
+
+// MODALES: Aviso legal y Política de privacidad en el menú overlay
+(function () {
+    // Crear referencias a los elementos del DOM (si existen)
+    function initModales() {
+        const menuOverlay = document.getElementById('menuOverlay');
+        if (!menuOverlay) return;
+
+        // Añadir HTML de footer de menú si no existe
+        if (!menuOverlay.querySelector('.menu-footer')) {
+            const footer = document.createElement('div');
+            footer.className = 'menu-footer';
+            footer.innerHTML = '\n                <a href="#" id="linkAvisoLegal">Aviso legal</a>\n                <a href="#" id="linkPrivacidad">Política de privacidad</a>\n            ';
+            menuOverlay.appendChild(footer);
+        }
+
+        // Crear backdrop y modales en body si no existen
+        if (!document.getElementById('modalBackdrop')) {
+            const backdrop = document.createElement('div');
+            backdrop.id = 'modalBackdrop';
+            backdrop.className = 'modal-backdrop';
+            document.body.appendChild(backdrop);
+        }
+
+        if (!document.getElementById('modalAviso')) {
+            const modal = document.createElement('div');
+            modal.id = 'modalAviso';
+            modal.className = 'modal';
+            modal.innerHTML = '\n                <h3 class="modal-titulo">Aviso legal</h3>\n                <div class="modal-cuerpo">\n                    <p>Propietario: Sociedad Gastronómica Nuberu S.L.</p>\n                    <p>DNI/CIF: B-12345678</p>\n                    <p>Dirección: Calle Falsa 123, 33550, Cangas de Onís (Asturias)</p>\n                    <p>Contacto: reservas@nuberu.com</p>\n                    <p>Contenido de prueba con información legal ficticia proporcionada por el propietario.</p>\n                </div>\n                <button class="modal-cierre" data-modal-close>Cerrar</button>\n            ';
+            document.body.appendChild(modal);
+        }
+
+        if (!document.getElementById('modalPrivacidad')) {
+            const modal = document.createElement('div');
+            modal.id = 'modalPrivacidad';
+            modal.className = 'modal';
+            modal.innerHTML = '\n                <h3 class="modal-titulo">Política de privacidad</h3>\n                <div class="modal-cuerpo">\n                    <p>Responsable del tratamiento: Sociedad Gastronómica Nuberu S.L.</p>\n                    <p>Finalidad: Gestión de reservas y comunicaciones comerciales con consentimiento expreso.</p>\n                    <p>Derechos: El usuario puede ejercer sus derechos enviando un correo a privacidad@nuberu.com.</p>\n                    <p>Texto de ejemplo completo, datos ficticios del propietario y condiciones de tratamiento de datos.</p>\n                </div>\n                <button class="modal-cierre" data-modal-close>Cerrar</button>\n            ';
+            document.body.appendChild(modal);
+        }
+
+        const backdrop = document.getElementById('modalBackdrop');
+        const modalAviso = document.getElementById('modalAviso');
+        const modalPrivacidad = document.getElementById('modalPrivacidad');
+
+        // Funciones abrir/cerrar
+        function abrirModal(modalEl) {
+            if (!modalEl) return;
+            backdrop.classList.add('activo');
+            modalEl.classList.add('activo');
+            // Añadir clase para bloquear scroll y aplicar desenfoque si es necesario
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarModal(modalEl) {
+            if (!modalEl) return;
+            backdrop.classList.remove('activo');
+            modalEl.classList.remove('activo');
+            document.body.style.overflow = ''; // restaurar scroll
+        }
+
+        // Listeners en los enlaces del footer
+        const linkAviso = document.getElementById('linkAvisoLegal');
+        const linkPriv = document.getElementById('linkPrivacidad');
+
+        if (linkAviso) {
+            linkAviso.addEventListener('click', function (e) {
+                e.preventDefault();
+                abrirModal(modalAviso);
+            });
+        }
+        if (linkPriv) {
+            linkPriv.addEventListener('click', function (e) {
+                e.preventDefault();
+                abrirModal(modalPrivacidad);
+            });
+        }
+
+        // Cerrar con el backdrop
+        backdrop.addEventListener('click', function () {
+            // cerrar cualquier modal activo
+            [modalAviso, modalPrivacidad].forEach(function (m) {
+                if (m && m.classList.contains('activo')) cerrarModal(m);
+            });
+        });
+
+        // Cerrar con botones de cierre
+        document.body.addEventListener('click', function (e) {
+            if (e.target && e.target.matches('[data-modal-close]')) {
+                const modal = e.target.closest('.modal');
+                if (modal) cerrarModal(modal);
+            }
+        });
+
+        // Cerrar con Escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                [modalAviso, modalPrivacidad].forEach(function (m) {
+                    if (m && m.classList.contains('activo')) cerrarModal(m);
+                });
+            }
+        });
+    }
+
+    // Inicializar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initModales);
+    } else {
+        initModales();
+    }
+})();
