@@ -767,6 +767,35 @@ body.menu-abierto .menu-overlay {
         transform: none;
     }
 
+    /* Móvil: alinear la sección 'Actualidad' a la izquierda (como en Galería)
+       y evitar que la sección siguiente (#mapa) se superponga por márgenes negativos. */
+    #actualidad {
+        grid-template-columns: 1fr;
+        padding: 60px 32px 20px;
+        gap: 40px;
+        text-align: left; /* por defecto los bloques deben alinearse a la izquierda */
+    }
+
+    .actualidad-bloque,
+    .actualidad-bloque1,
+    .actualidad-bloque:last-child {
+        padding: 0;
+        border: none;
+        text-align: left; /* asegurar alineado a la izquierda de títulos y CTAs */
+    }
+
+    .actualidad-descripcion {
+        max-width: 100%; /* permitir que el texto ocupe todo el ancho disponible */
+        margin-bottom: 24px;
+    }
+
+    /* Evitar el solapamiento del mapa en móvil anulando los márgenes negativos */
+    #mapa {
+        padding: 40px 32px 60px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
     #intro {
         grid-template-columns: 1fr;
         padding: 60px 32px;
@@ -783,20 +812,6 @@ body.menu-abierto .menu-overlay {
     }
 
     #filosofia { padding: 40px 32px 60px; }
-
-    #actualidad {
-        grid-template-columns: 1fr;
-        padding: 60px 32px;
-        gap: 60px;
-    }
-
-    .actualidad-bloque,
-    .actualidad-bloque:last-child {
-        padding: 0;
-        border: none;
-    }
-
-    #mapa { padding: 40px 32px 60px; }
 
     .mapa-ctas {
         flex-direction: column;
