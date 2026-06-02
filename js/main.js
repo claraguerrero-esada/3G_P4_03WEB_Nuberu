@@ -435,3 +435,45 @@ document.addEventListener('DOMContentLoaded', function() {
         initModales();
     }
 })();
+
+/* =============================================
+   Ajuste: centrar el logo cuando el botón "Saltar y reservar"
+   no está visible (por ejemplo en móvil). Se añade/remueve la
+   clase .sin-saltar en la barra inferior según visibilidad.
+============================================= */
+(function () {
+    function isVisible(el) {
+        if (!el) return false;
+        const style = window.getComputedStyle(el);
+        return style && style.display !== 'none' && el.offsetParent !== null;
+    }
+
+    function updateLogoCenter() {
+        const nav = document.querySelector('.barra-inferior');
+        if (!nav) return;
+        const btn = document.getElementById('btnSaltarBarra') || document.querySelector('.btn-saltar-barra');
+        const visible = isVisible(btn);
+        if (!visible) nav.classList.add('sin-saltar'); else nav.classList.remove('sin-saltar');
+    }
+
+    function debounce(fn, wait) {
+        let t = null;
+        return function () { clearTimeout(t); t = setTimeout(fn, wait); };
+    }
+
+    // Ejecutar al cargar
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateLogoCenter);
+    } else {
+        updateLogoCenter();
+    }
+
+    // Actualizar al redimensionar
+    window.addEventListener('resize', debounce(updateLogoCenter, 120));
+
+    // Observar cambios en la clase del body (p.ej. test-activo) para actualizar
+    if (window.MutationObserver) {
+        const mo = new MutationObserver(debounce(updateLogoCenter, 60));
+        mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+})();

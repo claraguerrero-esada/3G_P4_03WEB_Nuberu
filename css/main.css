@@ -774,6 +774,13 @@ body.menu-abierto .menu-overlay {
         display: none !important;
     }
 
+    /* Si la barra tiene la clase .sin-saltar (el botón no está visible), centrar el logo */
+    .barra-inferior.sin-saltar .barra-logo {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+    }
+
     #intro {
         grid-template-columns: 1fr;
         padding: 60px 32px;
