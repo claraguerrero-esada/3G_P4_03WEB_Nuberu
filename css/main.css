@@ -762,8 +762,8 @@ body.menu-abierto .menu-overlay {
 ============================================= */
 @media (max-width: 900px) {
     .barra-logo {
-        left: 100px;
-        right: auto;
+        left: auto;
+        right: 100px;
         transform: none;
     }
 
