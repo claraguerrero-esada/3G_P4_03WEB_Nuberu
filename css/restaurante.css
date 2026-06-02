@@ -31,15 +31,20 @@
 
 .rest-label-fijo {
     /* Hacer exactamente igual que .gal-label-fijo */
-    position: fixed;
-    top: 60px;
-    left: 80px;
-    font-size: 20px;
-    color: var(--negro);
-    font-weight: 400;
-    z-index: 500;
-    pointer-events: auto;
-    cursor: pointer;
+    position: fixed !important;
+    top: calc(60px + env(safe-area-inset-top, 0px)) !important;
+    left: calc(20px + env(safe-area-inset-left, 0px)) !important; /* ajustado a 20px */
+    right: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    font-size: 20px !important;
+    color: var(--negro) !important;
+    font-weight: 400 !important;
+    z-index: 10000 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
 }
 
 /* Si el texto está dentro de un span, asegurar tamaño heredado igual */
@@ -48,6 +53,7 @@
     line-height: 1;
     color: inherit;
     font-weight: inherit;
+    display: inline-block;
 }
 
 .rest-intro__label-texto {
@@ -455,23 +461,28 @@
 .rest-eventos__imagen {
     overflow: hidden;
     position: relative;
+    max-width: 320px; /* ajustado a 320px */
 }
 
 .rest-eventos__imagen img {
-    width: 80%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    margin-left: 0; /* alinear a la izquierda dentro de la columna */
-    margin-right: 60px; /* espacio hacia el contenido, igual que la galería usa margin-left en la columna derecha */
+    width: 100% !important; /* ocupa la caja limitada */
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 60px 0 0 !important; /* separación hacia el contenido */
 }
 
-/* En móvil, eliminar márgenes para que la imagen quede centrada (full-width limitado) */
+/* En móvil, imagen centrada y con ancho limitado por viewport */
 @media (max-width: 900px) {
+    .rest-eventos__imagen {
+        max-width: none !important;
+        width: 100% !important;
+    }
     .rest-eventos__imagen img {
         width: 95% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        max-width: none !important;
+        margin: 0 auto !important;
     }
 }
 
