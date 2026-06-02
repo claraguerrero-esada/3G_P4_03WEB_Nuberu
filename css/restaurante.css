@@ -30,13 +30,24 @@
 }
 
 .rest-label-fijo {
+    /* Hacer exactamente igual que .gal-label-fijo */
     position: fixed;
     top: 60px;
     left: 80px;
     font-size: 20px;
     color: var(--negro);
     font-weight: 400;
-    z-index: 20000; /* asegurar por encima del hero */
+    z-index: 500;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* Si el texto está dentro de un span, asegurar tamaño heredado igual */
+.rest-label-fijo span {
+    font-size: 20px;
+    line-height: 1;
+    color: inherit;
+    font-weight: inherit;
 }
 
 .rest-intro__label-texto {
@@ -435,36 +446,42 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
+    max-width: 1400px;
     margin: 0 auto;
     border-top: 1px solid #000000;
-    align-items: center;
+    align-items: stretch;
 }
 
 .rest-eventos__imagen {
     overflow: hidden;
-    max-width: 800px;
-    padding-left: 150px;
+    position: relative;
 }
 
 .rest-eventos__imagen img {
-    width: 100%;
+    width: 80%;
     height: 100%;
     object-fit: cover;
     display: block;
+    margin-left: 0; /* alinear a la izquierda dentro de la columna */
+    margin-right: 60px; /* espacio hacia el contenido, igual que la galería usa margin-left en la columna derecha */
+}
+
+/* En móvil, eliminar márgenes para que la imagen quede centrada (full-width limitado) */
+@media (max-width: 900px) {
+    .rest-eventos__imagen img {
+        width: 95% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
 }
 
 .rest-eventos__contenido {
-    padding: 80px;
-}
-
-.rest-eventos__titulo-manuscrito {
-    font-size: clamp(28px, 3.5vw, 52px);
-    font-weight: 300;
-    font-style: italic;
-    margin: 16px 0 24px;
-    line-height: 1.2;
-    /* PRODUCCIÓN: ocultar este h2 y mostrar la imagen manuscrita */
-    font-family: 'Brush Script MT', 'Segoe Script', cursive;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* alinear a la izquierda */
+    text-align: left;
 }
 
 .rest-eventos__descripcion {
@@ -473,7 +490,7 @@
     color: var(--gris-texto);
     line-height: 1.7;
     margin-bottom: 32px;
-    max-width: 400px;
+    max-width: 1000px; /* similar a galería */
 }
 
 /* =============================================
