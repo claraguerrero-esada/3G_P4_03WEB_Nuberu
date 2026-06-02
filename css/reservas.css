@@ -105,6 +105,18 @@
     transform: scale(1.03);
 }
 
+.btn-primario:disabled {
+    background: #d0d0d0;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-primario:disabled:hover {
+    background: #d0d0d0;
+    transform: none;
+}
+
 .btn-secundario {
     background: transparent;
     color: var(--negro);

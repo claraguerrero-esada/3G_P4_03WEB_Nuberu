@@ -148,6 +148,10 @@
     max-width: 600px;
 }
 
+.gal-expo__texto .btn-saber-mas {
+    align-self: flex-start;
+}
+
 /* Columna derecha: imagen */
 .gal-expo__imagen {
     overflow: hidden;

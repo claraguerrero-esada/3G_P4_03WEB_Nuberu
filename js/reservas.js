@@ -212,6 +212,8 @@ document.querySelectorAll('[data-paso="5"]').forEach(btn => {
         estado.respuestas.palabra = btn.dataset.valor;
         document.querySelectorAll('[data-paso="5"]').forEach(b => b.classList.remove('seleccionado'));
         btn.classList.add('seleccionado');
+        // Habilitar el botón de terminar cuando se selecciona una palabra
+        document.getElementById('btnTerminar').disabled = false;
     });
 });
 
@@ -315,6 +317,8 @@ document.getElementById('btnRepetirTest').addEventListener('click', () => {
     // Quitar selecciones visuales
     document.querySelectorAll('.seleccionado').forEach(el => el.classList.remove('seleccionado'));
     document.querySelectorAll('input[type="range"]').forEach(el => el.value = 50);
+    // Desactivar el botón de terminar nuevamente
+    document.getElementById('btnTerminar').disabled = true;
     // Volver al inicio del test
     estado.paso = 1;
     actualizarProgreso(1);
