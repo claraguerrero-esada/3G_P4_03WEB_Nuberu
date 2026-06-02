@@ -33,7 +33,7 @@
     /* Hacer exactamente igual que .gal-label-fijo */
     position: fixed !important;
     top: calc(60px + env(safe-area-inset-top, 0px)) !important;
-    left: calc(20px + env(safe-area-inset-left, 0px)) !important; /* ajustado a 20px */
+    left: calc(80px + env(safe-area-inset-left, 0px)) !important; /* ajustado a 20px */
     right: auto !important;
     transform: none !important;
     margin: 0 !important;
@@ -461,7 +461,7 @@
 .rest-eventos__imagen {
     overflow: hidden;
     position: relative;
-    max-width: 320px; /* ajustado a 320px */
+    max-width: 400px; /* ajustado a 320px */
 }
 
 .rest-eventos__imagen img {
@@ -470,9 +470,13 @@
     height: auto !important;
     object-fit: cover !important;
     display: block !important;
-    margin: 0 60px 0 0 !important; /* separación hacia el contenido */
+    margin: 400 60px 0 0 !important; /* separación hacia el contenido */
 }
-
+.rest-eventos__titulo-manuscrito {
+    font-family: Inter;
+    font-weight: 300;
+    font-size: 30px !important;
+}
 /* En móvil, imagen centrada y con ancho limitado por viewport */
 @media (max-width: 900px) {
     .rest-eventos__imagen {
