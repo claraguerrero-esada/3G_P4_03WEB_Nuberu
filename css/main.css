@@ -489,7 +489,7 @@ body.menu-abierto .menu-overlay {
 ============================================= */
 #actualidad {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0;
     margin: 0 auto;
     padding: 100px 80px;
@@ -497,16 +497,19 @@ body.menu-abierto .menu-overlay {
 }
 
 .actualidad-bloque {
-    padding: 10px 90px 0 0;
+    padding: 60px 0 60px 0;
+    border-bottom: 1px solid #000000;
 }
 
 .actualidad-bloque1 {
-    padding: 10px 90px 0 90px;
+    padding: 60px 0 60px 0;
+    border-bottom: 1px solid #000000;
 }
 
 .actualidad-bloque:last-child {
-    padding: 0 0 0 60px;
-    border-left: 1px solid #000000;
+    padding: 60px 0 0 0;
+    border-bottom: none;
+    border-left: none;
 }
 
 .actualidad-etiqueta {
