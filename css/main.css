@@ -460,7 +460,6 @@ body.menu-abierto .menu-overlay {
 
 .filosofia-imagen {
     width: 100%;
-    aspect-ratio: 16 / 7;
     overflow: hidden;
     background: var(--gris-claro);
     position: relative;
@@ -484,32 +483,42 @@ body.menu-abierto .menu-overlay {
     letter-spacing: 0.08em;
 }
 
+
 /* =============================================
    SECCIÓN 4: ACTUALIDAD
 ============================================= */
 #actualidad {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;   /* ← DOS columnas en desktop */
     gap: 0;
     margin: 0 auto;
-    padding: 100px 80px;
+    padding: 100px 80px 100px 200px;
     border-top: 1px solid #000000;
 }
 
 .actualidad-bloque {
     padding: 60px 0 60px 0;
-    border-bottom: 1px solid #000000;
 }
 
 .actualidad-bloque1 {
     padding: 60px 0 60px 0;
-    border-bottom: 1px solid #000000;
 }
 
 .actualidad-bloque:last-child {
     padding: 60px 0 0 0;
-    border-bottom: none;
     border-left: none;
+}
+
+/* ── MÓVIL: una encima de otra ── */
+@media (max-width: 900px) {
+    #actualidad {
+        grid-template-columns: 1fr;
+        padding: 60px 32px;
+    }
+
+    .actualidad-bloque:last-child {
+        padding: 60px 0;
+    }
 }
 
 .actualidad-etiqueta {
@@ -768,6 +777,18 @@ body.menu-abierto .menu-overlay {
         left: 100px;
         right: auto;
         transform: none;
+            #mapa {
+                margin-top: 0;
+            }
+    }
+
+    /* Desplazar el logo hacia la izquierda SOLO en móvil para las páginas principales
+       (excepto reservas que tiene el test/formulario) */
+    body.page-index .barra-logo,
+    body.page-galeria .barra-logo,
+    body.page-restaurante .barra-logo {
+        left: calc(50% - 80px) !important;
+        transform: none !important;
     }
 
     /* Ocultar en móvil el botón "Saltar y reservar" que aparece al iniciar el test
