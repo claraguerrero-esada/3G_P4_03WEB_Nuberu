@@ -513,7 +513,7 @@ body.menu-abierto .menu-overlay {
 @media (max-width: 900px) {
     #actualidad {
         grid-template-columns: 1fr;
-        padding: 60px 32px;
+        padding: 0px 0px 150px 60px;
     }
 
     .actualidad-bloque:last-child {
@@ -777,9 +777,24 @@ body.menu-abierto .menu-overlay {
         left: 100px;
         right: auto;
         transform: none;
-            #mapa {
-                margin-top: 0;
-            }
+
+        #mapa {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 40px 0 60px;  /* sin padding lateral */
+            max-width: 100%;
+        }
+
+        .mapa-contenedor {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+        }
+
+        .mapa-imagen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
 
     /* Desplazar el logo hacia la izquierda SOLO en móvil para las páginas principales
