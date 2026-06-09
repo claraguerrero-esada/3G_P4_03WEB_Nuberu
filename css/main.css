@@ -777,7 +777,7 @@ body.menu-abierto .menu-overlay {
         left: 100px;
         right: auto;
         transform: none;
-
+    }
         #mapa {
             margin-top: 0;
             margin-bottom: 0;
@@ -860,7 +860,7 @@ body.menu-abierto .menu-overlay {
         font-size: clamp(28px, 7vw, 44px);
         padding: 14px 0;
     }
-}
+
 
 /* =============================================
    BANNER DE COOKIES
